@@ -12,7 +12,7 @@ struct RootView: View {
     
     enum Screen {
         case dataTracker
-        
+        case timer
         case settings
     }
     
@@ -24,6 +24,10 @@ struct RootView: View {
                 Section {
                     NavigationLink(value: Screen.dataTracker) {
                         Label("Data Tracker", systemImage: "list.bullet.clipboard")
+                            .symbolRenderingMode(.multicolor)
+                    }
+                    NavigationLink(value: Screen.timer) {
+                        Label("Timer", systemImage: "timer.circle")
                             .symbolRenderingMode(.multicolor)
                     }
                 }
@@ -41,6 +45,8 @@ struct RootView: View {
             case .dataTracker, .none:
                 SessionView()
                     .environment(\.managedObjectContext, viewContext)
+            case .timer:
+                Text("Timer Placeholder!")
             case .settings:
                 Text("Settings Placeholder!")
                 
