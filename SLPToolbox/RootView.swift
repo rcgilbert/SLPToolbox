@@ -43,12 +43,14 @@ struct RootView: View {
         } detail: {
             switch selectedScreen {
             case .dataTracker, .none:
-                SessionView()
+                DataTrackView()
                     .environment(\.managedObjectContext, viewContext)
             case .timer:
                 Text("Timer Placeholder!")
+                    .navigationTitle("Timer")
             case .settings:
                 Text("Settings Placeholder!")
+                    .navigationTitle("Settings")
                 
             }
         }

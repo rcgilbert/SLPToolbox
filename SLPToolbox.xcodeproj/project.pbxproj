@@ -9,27 +9,27 @@
 /* Begin PBXBuildFile section */
 		443641FE294850C400E03A90 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443641FD294850C400E03A90 /* RootView.swift */; };
 		447BBE432947BAEC002D4DCA /* SLPToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */; };
-		447BBE452947BAEC002D4DCA /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE442947BAEC002D4DCA /* SessionView.swift */; };
+		447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE442947BAEC002D4DCA /* DataTrackView.swift */; };
 		447BBE472947BAEF002D4DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 447BBE462947BAEF002D4DCA /* Assets.xcassets */; };
 		447BBE4A2947BAEF002D4DCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 447BBE492947BAEF002D4DCA /* Preview Assets.xcassets */; };
 		447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE4B2947BAEF002D4DCA /* Persistence.swift */; };
 		447BBE4F2947BAEF002D4DCA /* SLPToolbox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE4D2947BAEF002D4DCA /* SLPToolbox.xcdatamodeld */; };
 		447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE562947C35F002D4DCA /* HelperExtensions.swift */; };
-		447BBE592947D543002D4DCA /* PatientCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE582947D543002D4DCA /* PatientCellView.swift */; };
+		447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE582947D543002D4DCA /* DataRowCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		443641FD294850C400E03A90 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		447BBE3F2947BAEC002D4DCA /* SLPToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLPToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPToolboxApp.swift; sourceTree = "<group>"; };
-		447BBE442947BAEC002D4DCA /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		447BBE442947BAEC002D4DCA /* DataTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTrackView.swift; sourceTree = "<group>"; };
 		447BBE462947BAEF002D4DCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		447BBE492947BAEF002D4DCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		447BBE4B2947BAEF002D4DCA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		447BBE4E2947BAEF002D4DCA /* SimpleTx.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleTx.xcdatamodel; sourceTree = "<group>"; };
 		447BBE502947BAEF002D4DCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		447BBE562947C35F002D4DCA /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
-		447BBE582947D543002D4DCA /* PatientCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientCellView.swift; sourceTree = "<group>"; };
+		447BBE582947D543002D4DCA /* DataRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRowCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +65,8 @@
 				447BBE562947C35F002D4DCA /* HelperExtensions.swift */,
 				447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */,
 				443641FD294850C400E03A90 /* RootView.swift */,
-				447BBE442947BAEC002D4DCA /* SessionView.swift */,
-				447BBE582947D543002D4DCA /* PatientCellView.swift */,
+				447BBE442947BAEC002D4DCA /* DataTrackView.swift */,
+				447BBE582947D543002D4DCA /* DataRowCellView.swift */,
 				447BBE462947BAEF002D4DCA /* Assets.xcassets */,
 				447BBE4B2947BAEF002D4DCA /* Persistence.swift */,
 				447BBE502947BAEF002D4DCA /* Info.plist */,
@@ -154,9 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				447BBE592947D543002D4DCA /* PatientCellView.swift in Sources */,
+				447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */,
 				447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */,
-				447BBE452947BAEC002D4DCA /* SessionView.swift in Sources */,
+				447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */,
 				447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */,
 				443641FE294850C400E03A90 /* RootView.swift in Sources */,
 				447BBE432947BAEC002D4DCA /* SLPToolboxApp.swift in Sources */,

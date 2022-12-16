@@ -9,13 +9,13 @@ import SwiftUI
 import CoreData
 import Combine
 
-struct SessionView: View {
+struct DataTrackView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.undoManager) private var undoManager
 
-    @FetchRequest(fetchRequest: Session.latestSessionRequest,
+    @FetchRequest(fetchRequest: DataTrack.latestDataTrackRequest,
                   animation: .default)
-    private var session: FetchedResults<Session>
+    private var dataTrack: FetchedResults<DataTrack>
     
     private let undoObservers = Publishers.Merge3(NotificationCenter.default.publisher(for: .NSUndoManagerDidCloseUndoGroup),
                                                           NotificationCenter.default.publisher(for: .NSUndoManagerDidUndoChange),
@@ -27,8 +27,8 @@ struct SessionView: View {
     var body: some View {
         List {
             Section {
-                ForEach(session.first?.patientsArray ?? []) { item in
-                    PatientCellView(patient: item)
+                ForEach(dataTrack.first?.dataRowsArray ?? []) { item in
+                    DataRowCellView(dataRow: item)
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: move)
@@ -48,7 +48,7 @@ struct SessionView: View {
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
                 Button("New") {
-                    newSession()
+                    newDataTrack()
                 }
                 Spacer()
                 Button {
@@ -66,8 +66,8 @@ struct SessionView: View {
             }
         }
         .onAppear {
-            if session.first == nil {
-                newSession()
+            if dataTrack.first == nil {
+                newDataTrack()
             }
             viewContext.undoManager = undoManager
         }
@@ -77,39 +77,39 @@ struct SessionView: View {
         }
     }
 
-    private func newSession() {
+    private func newDataTrack() {
         withAnimation {
-            let newSession = Session(context: viewContext)
+            let newDataTrack = DataTrack(context: viewContext)
             let date = Date()
-            newSession.timestamp = date
-            newSession.name = "Session: \(itemFormatter.string(from: date))"
+            newDataTrack.timestamp = date
+            newDataTrack.name = "Data Track: \(itemFormatter.string(from: date))"
             
-            let newItem = Patient(context: viewContext)
+            let newItem = DataRow(context: viewContext)
             newItem.timestamp = Date()
-            newSession.add(patient: newItem)
+            newDataTrack.add(dataRow: newItem)
             
             save()
         }
     }
     private func addItem() {
         withAnimation {
-            let newItem = Patient(context: viewContext)
+            let newItem = DataRow(context: viewContext)
             newItem.timestamp = Date()
-            newItem.order = Int32(session.first?.patients?.count ?? 0)
-            session.first?.add(patient: newItem)
+            newItem.order = Int32(dataTrack.first?.dataRows?.count ?? 0)
+            dataTrack.first?.add(dataRow: newItem)
             save()
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { session.first!.patientsArray[$0] }.forEach(viewContext.delete)
+            offsets.map { dataTrack.first!.dataRowsArray[$0] }.forEach(viewContext.delete)
             save()
         }
     }
     
     func move(from source: IndexSet, to destination: Int) {
-        var revisedItemOrder = session.first!.patientsArray
+        var revisedItemOrder = dataTrack.first!.dataRowsArray
         revisedItemOrder.move(fromOffsets: source, toOffset: destination)
         
         for reverseIndex in stride(from: revisedItemOrder.count - 1,
@@ -143,6 +143,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        DataTrackView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

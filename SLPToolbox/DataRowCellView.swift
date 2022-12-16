@@ -1,5 +1,5 @@
 //
-//  PatientCellView.swift
+//  DataRowCellView.swift
 //  SimpleTx
 //
 //  Created by Ryan Gilbert on 12/12/22.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct PatientCellView: View {
+struct DataRowCellView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.undoManager) private var undoManager
     
-    @StateObject var patient: Patient
+    @StateObject var dataRow: DataRow
     
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
-            TextField("Data Title", text: $patient.wrappedName, prompt: Text("Enter Text"))
+            TextField("Data Title", text: $dataRow.wrappedName, prompt: Text("Enter Text"))
                 .font(.title)
                 .textFieldStyle(.roundedBorder)
                 .submitLabel(.done)
@@ -27,11 +27,11 @@ struct PatientCellView: View {
                         Text("Correct")
                             .font(.headline)
                             .frame(minWidth: 50)
-                        Text(NSNumber(value: patient.correctCount), formatter: countFormatter)
+                        Text(NSNumber(value: dataRow.correctCount), formatter: countFormatter)
                             .font(.title)
                             .frame(minWidth: 50)
                         Button {
-                            patient.correctCount += 1
+                            dataRow.correctCount += 1
                             save()
                         } label: {
                             Image(systemName: "plus.circle.fill")
@@ -47,11 +47,11 @@ struct PatientCellView: View {
                         Text("Incorrect")
                             .font(.headline)
                             .frame(minWidth: 50)
-                         Text(NSNumber(value: patient.incorrectCount), formatter: countFormatter)
+                         Text(NSNumber(value: dataRow.incorrectCount), formatter: countFormatter)
                              .font(.title)
                              .frame(minWidth: 50)
                         Button {
-                            patient.incorrectCount += 1
+                            dataRow.incorrectCount += 1
                             save()
                         } label: {
                             Image(systemName: "minus.circle.fill")
@@ -64,12 +64,12 @@ struct PatientCellView: View {
                 Spacer()
             }
             VStack(alignment: .center) {
-                Text("\(patient.correctCountString) / \(patient.totalString) _=_ \(patient.percentageCorrectString)")
+                Text("\(dataRow.correctCountString) / \(dataRow.totalString) _=_ \(dataRow.percentageCorrectString)")
                     .font(.title3)
             }
         }
         .padding()
-        .onChange(of: patient.name) { _ in
+        .onChange(of: dataRow.name) { _ in
             save()
         }
     }
@@ -84,13 +84,13 @@ struct PatientCellView: View {
     }
 }
 
-struct PatientCellView_Previews: PreviewProvider {
+struct DataRowCellView_Previews: PreviewProvider {
     static var previews: some View {
-        let patient = Patient(context: PersistenceController.preview.container.viewContext)
-        patient.name = "Elvis"
-        patient.timestamp = Date()
+        let dataRow = DataRow(context: PersistenceController.preview.container.viewContext)
+        dataRow.name = "Elvis"
+        dataRow.timestamp = Date()
         
-        return PatientCellView(patient: patient)
+        return DataRowCellView(dataRow: dataRow)
             .frame(height: 300)
     }
 }

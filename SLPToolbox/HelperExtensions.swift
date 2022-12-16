@@ -8,27 +8,27 @@
 import Foundation
 import CoreData
 
-extension Session {
-    static var latestSessionRequest: NSFetchRequest<Session> {
-        let request = Session.fetchRequest()
+extension DataTrack {
+    static var latestDataTrackRequest: NSFetchRequest<DataTrack> {
+        let request = DataTrack.fetchRequest()
         request.fetchLimit = 1
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \Session.timestamp, ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \DataTrack.timestamp, ascending: false)]
         return request
     }
     
-    var patientsArray: [Patient] {
-        let patientSet = self.patients as? Set<Patient> ?? .init()
-        return patientSet.sorted(by: { $0.order == $1.order ? $0.timestamp! < $1.timestamp! : $0.order < $1.order })
+    var dataRowsArray: [DataRow] {
+        let dataSet = self.dataRows as? Set<DataRow> ?? .init()
+        return dataSet.sorted(by: { $0.order == $1.order ? $0.timestamp! < $1.timestamp! : $0.order < $1.order })
     }
     
-    func add(patient: Patient) {
-        var patientSet = patients as? Set<Patient> ?? .init()
-        patientSet.insert(patient)
-        patients = patientSet as NSSet
+    func add(dataRow: DataRow) {
+        var dataSet = dataRows as? Set<DataRow> ?? .init()
+        dataSet.insert(dataRow)
+        dataRows = dataSet as NSSet
     }
 }
 
-extension Patient {
+extension DataRow {
     var total: Int {
         Int(incorrectCount + correctCount)
     }

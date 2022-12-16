@@ -13,15 +13,15 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        let session = Session(context: viewContext)
-        var patients: [Patient] = []
+        let dataTrack = DataTrack(context: viewContext)
+        var dataRows: [DataRow] = []
         for i in 0..<5 {
-            let newPatient = Patient(context: viewContext)
-            newPatient.name = "P \(i)"
-            newPatient.timestamp = Date()
-            patients.append(newPatient)
+            let newDataRow = DataRow(context: viewContext)
+            newDataRow.name = "P \(i)"
+            newDataRow.timestamp = Date()
+            dataRows.append(newDataRow)
         }
-        session.patients = NSSet(array: patients)
+        dataTrack.dataRows = NSSet(array: dataRows)
         
         do {
             try viewContext.save()
