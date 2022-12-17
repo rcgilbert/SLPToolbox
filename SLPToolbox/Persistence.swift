@@ -14,6 +14,8 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         let dataTrack = DataTrack(context: viewContext)
+        dataTrack.name = "Data Track"
+        dataTrack.timestamp = .now
         var dataRows: [DataRow] = []
         for i in 0..<5 {
             let newDataRow = DataRow(context: viewContext)

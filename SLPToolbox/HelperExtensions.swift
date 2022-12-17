@@ -21,11 +21,16 @@ extension DataTrack {
         return dataSet.sorted(by: { $0.order == $1.order ? $0.timestamp! < $1.timestamp! : $0.order < $1.order })
     }
     
+    var maxOrder: Int32 {
+        dataRowsArray.last?.order ?? -1
+    }
+    
     func add(dataRow: DataRow) {
         var dataSet = dataRows as? Set<DataRow> ?? .init()
         dataSet.insert(dataRow)
         dataRows = dataSet as NSSet
     }
+
 }
 
 extension DataRow {

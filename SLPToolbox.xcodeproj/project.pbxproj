@@ -16,6 +16,7 @@
 		447BBE4F2947BAEF002D4DCA /* SLPToolbox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE4D2947BAEF002D4DCA /* SLPToolbox.xcdatamodeld */; };
 		447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE562947C35F002D4DCA /* HelperExtensions.swift */; };
 		447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE582947D543002D4DCA /* DataRowCellView.swift */; };
+		448A3318294D7A6500403669 /* DataTracksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A3317294D7A6500403669 /* DataTracksListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		447BBE502947BAEF002D4DCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		447BBE562947C35F002D4DCA /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		447BBE582947D543002D4DCA /* DataRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRowCellView.swift; sourceTree = "<group>"; };
+		448A3317294D7A6500403669 /* DataTracksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTracksListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				443641FD294850C400E03A90 /* RootView.swift */,
 				447BBE442947BAEC002D4DCA /* DataTrackView.swift */,
 				447BBE582947D543002D4DCA /* DataRowCellView.swift */,
+				448A3317294D7A6500403669 /* DataTracksListView.swift */,
 				447BBE462947BAEF002D4DCA /* Assets.xcassets */,
 				447BBE4B2947BAEF002D4DCA /* Persistence.swift */,
 				447BBE502947BAEF002D4DCA /* Info.plist */,
@@ -158,6 +161,7 @@
 				447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */,
 				447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */,
 				447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */,
+				448A3318294D7A6500403669 /* DataTracksListView.swift in Sources */,
 				443641FE294850C400E03A90 /* RootView.swift in Sources */,
 				447BBE432947BAEC002D4DCA /* SLPToolboxApp.swift in Sources */,
 				447BBE4F2947BAEF002D4DCA /* SLPToolbox.xcdatamodeld in Sources */,

@@ -15,11 +15,18 @@ struct DataTrackView: View {
 
     @FetchRequest(fetchRequest: DataTrack.latestDataTrackRequest,
                   animation: .default)
-    private var dataTrack: FetchedResults<DataTrack>
+    private var dataTrackResult: FetchedResults<DataTrack>
+    
+    @State var selectedDataTrack: DataTrack?
+    @State var showTracksList: Bool = false
+    
+    var dataTrack: DataTrack? {
+        dataTrackResult.first
+    }
     
     private let undoObservers = Publishers.Merge3(NotificationCenter.default.publisher(for: .NSUndoManagerDidCloseUndoGroup),
-                                                          NotificationCenter.default.publisher(for: .NSUndoManagerDidUndoChange),
-                                                          NotificationCenter.default.publisher(for: .NSUndoManagerDidRedoChange))
+                                                  NotificationCenter.default.publisher(for: .NSUndoManagerDidUndoChange),
+                                                  NotificationCenter.default.publisher(for: .NSUndoManagerDidRedoChange))
     
     @State var undoDisabled: Bool = true
     @State var redoDisabled: Bool = true
@@ -27,7 +34,7 @@ struct DataTrackView: View {
     var body: some View {
         List {
             Section {
-                ForEach(dataTrack.first?.dataRowsArray ?? []) { item in
+                ForEach(dataTrack?.dataRowsArray ?? []) { item in
                     DataRowCellView(dataRow: item)
                 }
                 .onDelete(perform: deleteItems)
@@ -50,6 +57,9 @@ struct DataTrackView: View {
                 Button("New") {
                     newDataTrack()
                 }
+                Button("Load Track") {
+                    showTracksList.toggle()
+                }
                 Spacer()
                 Button {
                     undoManager?.undo()
@@ -65,15 +75,31 @@ struct DataTrackView: View {
                 }.disabled(redoDisabled)
             }
         }
-        .onAppear {
-            if dataTrack.first == nil {
+        .task {
+            if dataTrack == nil {
                 newDataTrack()
             }
+        }
+        .onAppear {
             viewContext.undoManager = undoManager
         }
         .onReceive(undoObservers) { _ in
             undoDisabled = undoManager?.canUndo == false
             redoDisabled = undoManager?.canRedo == false
+        }
+        .onChange(of: selectedDataTrack) { newValue in
+            withAnimation {
+                if let selectedTrack = newValue {
+                    dataTrackResult.nsPredicate = NSPredicate(format: "SELF == %@", selectedTrack)
+                } else {
+                    dataTrackResult.nsPredicate = nil
+                }
+            }
+        }
+        .sheet(isPresented: $showTracksList) {
+            DataTracksListView(selectedTrack: $selectedDataTrack) {
+                showTracksList.toggle()
+            }
         }
     }
 
@@ -95,21 +121,21 @@ struct DataTrackView: View {
         withAnimation {
             let newItem = DataRow(context: viewContext)
             newItem.timestamp = Date()
-            newItem.order = Int32(dataTrack.first?.dataRows?.count ?? 0)
-            dataTrack.first?.add(dataRow: newItem)
+            newItem.order = dataTrack!.maxOrder + 1
+            dataTrack?.add(dataRow: newItem)
             save()
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { dataTrack.first!.dataRowsArray[$0] }.forEach(viewContext.delete)
+            offsets.map { dataTrack!.dataRowsArray[$0] }.forEach(viewContext.delete)
             save()
         }
     }
     
     func move(from source: IndexSet, to destination: Int) {
-        var revisedItemOrder = dataTrack.first!.dataRowsArray
+        var revisedItemOrder = dataTrack!.dataRowsArray
         revisedItemOrder.move(fromOffsets: source, toOffset: destination)
         
         for reverseIndex in stride(from: revisedItemOrder.count - 1,

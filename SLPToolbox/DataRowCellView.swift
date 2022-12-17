@@ -11,7 +11,7 @@ struct DataRowCellView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.undoManager) private var undoManager
     
-    @StateObject var dataRow: DataRow
+    @ObservedObject var dataRow: DataRow
     
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
