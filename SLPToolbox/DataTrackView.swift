@@ -17,9 +17,6 @@ struct DataTrackView: View {
                   animation: .default)
     private var dataTrackResult: FetchedResults<DataTrack>
     
-    @State var selectedDataTrack: DataTrack?
-    @State var showTracksList: Bool = false
-    
     var dataTrack: DataTrack? {
         dataTrackResult.first
     }
@@ -54,11 +51,8 @@ struct DataTrackView: View {
         .navigationTitle("Data Tracker")
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
-                Button("New") {
-                    newDataTrack()
-                }
-                Button("Load Track") {
-                    showTracksList.toggle()
+                Button("Clear") {
+                    resetTrack()
                 }
                 Spacer()
                 Button {
@@ -87,22 +81,16 @@ struct DataTrackView: View {
             undoDisabled = undoManager?.canUndo == false
             redoDisabled = undoManager?.canRedo == false
         }
-        .onChange(of: selectedDataTrack) { newValue in
-            withAnimation {
-                if let selectedTrack = newValue {
-                    dataTrackResult.nsPredicate = NSPredicate(format: "SELF == %@", selectedTrack)
-                } else {
-                    dataTrackResult.nsPredicate = nil
-                }
-            }
-        }
-        .sheet(isPresented: $showTracksList) {
-            DataTracksListView(selectedTrack: $selectedDataTrack) {
-                showTracksList.toggle()
-            }
-        }
     }
 
+    private func resetTrack() {
+        if let dataTrack = dataTrack {
+            viewContext.delete(dataTrack)
+        }
+        
+        newDataTrack()
+    }
+    
     private func newDataTrack() {
         withAnimation {
             let newDataTrack = DataTrack(context: viewContext)
