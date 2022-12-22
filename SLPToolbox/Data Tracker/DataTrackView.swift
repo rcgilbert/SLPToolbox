@@ -33,6 +33,9 @@ struct DataTrackView: View {
             Section {
                 ForEach(dataTrack?.dataRowsArray ?? []) { item in
                     DataRowCellView(dataRow: item)
+                        .alignmentGuide(.listRowSeparatorLeading) { dimensions in
+                            dimensions[.leading]
+                        }
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: move)

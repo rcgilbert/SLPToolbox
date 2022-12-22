@@ -13,6 +13,9 @@ struct RootView: View {
     enum Screen {
         case dataTracker
         case timer
+        case ageCalculator
+        case dateCalculator
+        case notes
         case settings
     }
     
@@ -28,6 +31,18 @@ struct RootView: View {
                     }
                     NavigationLink(value: Screen.timer) {
                         Label("Timer", systemImage: "timer.circle")
+                            .symbolRenderingMode(.multicolor)
+                    }
+                    NavigationLink(value: Screen.ageCalculator) {
+                        Label("Age Calculator", systemImage: "number.circle")
+                            .symbolRenderingMode(.multicolor)
+                    }
+                    NavigationLink(value: Screen.dateCalculator) {
+                        Label("Date Calculator", systemImage: "calendar.circle")
+                            .symbolRenderingMode(.multicolor)
+                    }
+                    NavigationLink(value: Screen.notes) {
+                        Label("Notes", systemImage: "note.text")
                             .symbolRenderingMode(.multicolor)
                     }
                 }
@@ -46,12 +61,21 @@ struct RootView: View {
                 DataTrackView()
                     .environment(\.managedObjectContext, viewContext)
             case .timer:
-                Text("Timer Placeholder!")
+                TimerView()
                     .navigationTitle("Timer")
+            case .ageCalculator:
+                Text("Age Calculator Placeholder!")
+                    .navigationTitle("Age Calculator")
+            case .dateCalculator:
+                Text("Date Calculator Placeholder!")
+                    .navigationTitle("Date Calculator")
+            case .notes:
+                Text("Notes Placeholder!")
+                    .navigationTitle("Notes")
             case .settings:
                 Text("Settings Placeholder!")
                     .navigationTitle("Settings")
-                
+           
             }
         }
         .navigationSplitViewStyle(.balanced)
