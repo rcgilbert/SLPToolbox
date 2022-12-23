@@ -15,12 +15,23 @@ import UserNotifications
     @Published var isTimerPaused: Bool = false
     @Published var endDate: Date = .distantFuture
     @Published var timeRemaining: TimeInterval = 0
+    @Published var startDate: Date = .now
     
     private var updateTimer: Timer?
     
     private let notificationID = "SLPToolbox.Timer"
     
     func start() {
+        startDate = .now
+        endDate = Date.now.addingTimeInterval(timeRemaining)
+        isTimerRunning = true
+        isTimerPaused = false
+        
+        scheduleTimerNotication()
+        updateTimer = .scheduledTimer(timeInterval: 1, target: self, selector: #selector(didUpdate), userInfo: nil, repeats: true)
+    }
+    
+    func resume() {
         endDate = Date.now.addingTimeInterval(timeRemaining)
         isTimerRunning = true
         isTimerPaused = false

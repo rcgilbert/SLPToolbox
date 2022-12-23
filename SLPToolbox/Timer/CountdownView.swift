@@ -22,6 +22,12 @@ struct CountdownView: View {
         return $0
     }(DateComponentsFormatter())
     
+    private let dateFormatter: DateFormatter = {
+        $0.dateStyle = .none
+        $0.timeStyle = .short
+        return $0
+    }(DateFormatter())
+    
     @ObservedObject var timerModel: TimerModel
 
     private func countdownTexts(for start: Date, end: Date) -> some View {
@@ -68,6 +74,15 @@ struct CountdownView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            Label {
+                Text(timerModel.endDate, formatter: dateFormatter)
+            } icon: {
+                Image(systemName: "bell.fill")
+            }
+            .font(.subheadline)
+            .foregroundColor(.secondary)
+            .opacity(timerModel.isTimerPaused ? 0.5: 1.0)
+            .padding(.top, 1)
         }
     }
 }

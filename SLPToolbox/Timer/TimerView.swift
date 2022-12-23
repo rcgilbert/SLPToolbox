@@ -8,26 +8,24 @@
 import SwiftUI
 
 
-// TODO: Fix Layout for Horizontal Layout
 // TODO: Add progress meter
 // TODO: Add Ability to choose alarm sound, etc.
+// TODO: Fix picker state reset
 struct TimerView: View {
+    @Environment(\.verticalSizeClass) var sizeClass
     @State var countdownDuration: TimeInterval = 0
     @StateObject var timerModel: TimerModel = TimerModel()
     
     var body: some View {
-        VStack(spacing: 100) {
-            Spacer()
-            VStack {
-                if timerModel.isTimerRunning {
-                    CountdownView(timerModel: timerModel)
-                        .frame(minHeight: 200)
-                        .padding()
-                } else {
-                    CountdownPicker(duration: $timerModel.timeRemaining)
-                        .frame(minHeight: 200)
-                        .padding()
-                }
+        VStack(spacing: 8) {
+            if timerModel.isTimerRunning {
+                CountdownView(timerModel: timerModel)
+                    .frame(minHeight: sizeClass == .compact ? 200: 250)
+                    .padding()
+            } else {
+                CountdownPicker(duration: $timerModel.timeRemaining)
+                    .frame(minHeight: sizeClass == .compact ? 200: 250)
+                    .padding()
             }
             HStack {
                 Button {
@@ -53,8 +51,10 @@ struct TimerView: View {
                 Spacer()
                 Button {
                     withAnimation {
-                        if !timerModel.isTimerRunning || timerModel.isTimerPaused {
+                        if !timerModel.isTimerRunning {
                             timerModel.start()
+                        } else if timerModel.isTimerPaused {
+                            timerModel.resume()
                         } else {
                             timerModel.pause()
                         }

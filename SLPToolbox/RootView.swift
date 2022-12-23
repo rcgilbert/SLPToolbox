@@ -10,7 +10,7 @@ import SwiftUI
 struct RootView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    enum Screen {
+    enum Screen: Int {
         case dataTracker
         case timer
         case ageCalculator
@@ -20,6 +20,7 @@ struct RootView: View {
     }
     
     @State var selectedScreen: Screen? = .dataTracker
+    @AppStorage("selectedScreenIndex") var selectedScreenIndex: Int = Screen.dataTracker.rawValue
     
     var body: some View {
         NavigationSplitView {
@@ -79,6 +80,12 @@ struct RootView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .onAppear {
+            selectedScreen = Screen(rawValue: selectedScreenIndex) ?? selectedScreen
+        }
+        .onChange(of: selectedScreen) { newValue in
+            selectedScreenIndex = newValue?.rawValue ?? 0
+        }
     }
 }
 

@@ -78,6 +78,10 @@ final class CountdownPickerView: UIPickerView {
         }
        
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        setNeedsUpdateConstraints()
+    }
 }
 
 // MARK: - PickerCell
@@ -123,7 +127,7 @@ struct CountdownPicker: UIViewRepresentable {
     }
     
     func updateUIView(_ pickerView: CountdownPickerView, context: Context) {
-        
+        pickerView.setNeedsUpdateConstraints()
     }
     
     func makeCoordinator() -> Coordinator {

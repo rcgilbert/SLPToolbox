@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4420F112294EBDB600719C32 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420F111294EBDB600719C32 /* TimerView.swift */; };
 		443641FE294850C400E03A90 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443641FD294850C400E03A90 /* RootView.swift */; };
+		4465663C29551D1600BA31B0 /* AdaptiveStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465663B29551D1600BA31B0 /* AdaptiveStack.swift */; };
 		446AE4AD295113DA00878647 /* CountdownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4AC295113DA00878647 /* CountdownPicker.swift */; };
 		446AE4B1295416DC00878647 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B0295416DC00878647 /* CountdownView.swift */; };
 		446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B22954BD0A00878647 /* TimerModel.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		4420F111294EBDB600719C32 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		443641FD294850C400E03A90 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		4465663B29551D1600BA31B0 /* AdaptiveStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveStack.swift; sourceTree = "<group>"; };
 		446AE4AC295113DA00878647 /* CountdownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownPicker.swift; sourceTree = "<group>"; };
 		446AE4B0295416DC00878647 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		446AE4B22954BD0A00878647 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		446A2816294D8E7C00DD14E4 /* UnusedViews */ = {
 			isa = PBXGroup;
 			children = (
+				4465663B29551D1600BA31B0 /* AdaptiveStack.swift */,
 				448A3317294D7A6500403669 /* DataTracksListView.swift */,
 			);
 			path = UnusedViews;
@@ -194,6 +197,7 @@
 			files = (
 				446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */,
 				447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */,
+				4465663C29551D1600BA31B0 /* AdaptiveStack.swift in Sources */,
 				447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */,
 				447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */,
 				447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */,
