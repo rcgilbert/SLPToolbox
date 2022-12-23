@@ -10,7 +10,6 @@ import SwiftUI
 
 // TODO: Add progress meter
 // TODO: Add Ability to choose alarm sound, etc.
-// TODO: Fix picker state reset
 struct TimerView: View {
     @Environment(\.verticalSizeClass) var sizeClass
     @State var countdownDuration: TimeInterval = 0

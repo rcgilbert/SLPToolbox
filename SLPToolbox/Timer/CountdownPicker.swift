@@ -117,17 +117,24 @@ fileprivate final class PickerCell: UIView {
 
 struct CountdownPicker: UIViewRepresentable {
     @Binding var duration: TimeInterval
+    @AppStorage("Timer.SelectedHourIndex") var selectedHourIndex = 0
+    @AppStorage("Timer.SelectedMinIndex") var selectedMinIndex = 0
+    @AppStorage("Timer.SelectedSecIndex") var selectedSecIndex = 0
     
     func makeUIView(context: Context) -> CountdownPickerView {
         let pickerView = CountdownPickerView()
         pickerView.dataSource = context.coordinator
         pickerView.delegate = context.coordinator
         pickerView.setNeedsUpdateConstraints()
+        
+        pickerView.selectRow(selectedHourIndex, inComponent: 0, animated: false)
+        pickerView.selectRow(selectedMinIndex, inComponent: 1, animated: false)
+        pickerView.selectRow(selectedSecIndex, inComponent: 2, animated: false)
         return pickerView
     }
     
     func updateUIView(_ pickerView: CountdownPickerView, context: Context) {
-        pickerView.setNeedsUpdateConstraints()
+        
     }
     
     func makeCoordinator() -> Coordinator {
@@ -174,6 +181,9 @@ struct CountdownPicker: UIViewRepresentable {
             let secondIndex = pickerView.selectedRow(inComponent: 2)
             
             parent.duration = TimeInterval(pickerData[0][hourIndex]*60*60 + pickerData[1][minuteIndex]*60 + pickerData[2][secondIndex])
+            parent.selectedHourIndex = pickerView.selectedRow(inComponent: 0)
+            parent.selectedMinIndex = pickerView.selectedRow(inComponent: 1)
+            parent.selectedSecIndex = pickerView.selectedRow(inComponent: 2)
             
             if let countdownPicker = pickerView as? CountdownPickerView {
                 countdownPicker.updateUnitLabels(for: row, in: component)
