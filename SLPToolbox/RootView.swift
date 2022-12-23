@@ -28,23 +28,18 @@ struct RootView: View {
                 Section {
                     NavigationLink(value: Screen.dataTracker) {
                         Label("Data Tracker", systemImage: "list.bullet.clipboard")
-                            .symbolRenderingMode(.multicolor)
                     }
                     NavigationLink(value: Screen.timer) {
                         Label("Timer", systemImage: "timer.circle")
-                            .symbolRenderingMode(.multicolor)
                     }
                     NavigationLink(value: Screen.ageCalculator) {
-                        Label("Age Calculator", systemImage: "number.circle")
-                            .symbolRenderingMode(.multicolor)
+                        Label("Age Calculator", systemImage: "number.square")
                     }
                     NavigationLink(value: Screen.dateCalculator) {
-                        Label("Date Calculator", systemImage: "calendar.circle")
-                            .symbolRenderingMode(.multicolor)
+                        Label("Date Calculator", systemImage: "calendar")
                     }
                     NavigationLink(value: Screen.notes) {
                         Label("Notes", systemImage: "note.text")
-                            .symbolRenderingMode(.multicolor)
                     }
                 }
                 Section {
@@ -65,10 +60,10 @@ struct RootView: View {
                 TimerView()
                     .navigationTitle("Timer")
             case .ageCalculator:
-                Text("Age Calculator Placeholder!")
+                AgeCalculatorView()
                     .navigationTitle("Age Calculator")
             case .dateCalculator:
-                Text("Date Calculator Placeholder!")
+                DateCalculatorView()
                     .navigationTitle("Date Calculator")
             case .notes:
                 Text("Notes Placeholder!")

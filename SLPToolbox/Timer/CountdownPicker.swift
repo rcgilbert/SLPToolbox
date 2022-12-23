@@ -121,6 +121,10 @@ struct CountdownPicker: UIViewRepresentable {
     @AppStorage("Timer.SelectedMinIndex") var selectedMinIndex = 0
     @AppStorage("Timer.SelectedSecIndex") var selectedSecIndex = 0
     
+    func timeInterveral(for hour: Int, minute: Int, second: Int) -> TimeInterval {
+        TimeInterval((hour * 60 * 60) + (minute * 60) + second)
+    }
+    
     func makeUIView(context: Context) -> CountdownPickerView {
         let pickerView = CountdownPickerView()
         pickerView.dataSource = context.coordinator
@@ -130,6 +134,11 @@ struct CountdownPicker: UIViewRepresentable {
         pickerView.selectRow(selectedHourIndex, inComponent: 0, animated: false)
         pickerView.selectRow(selectedMinIndex, inComponent: 1, animated: false)
         pickerView.selectRow(selectedSecIndex, inComponent: 2, animated: false)
+        
+        DispatchQueue.main.async {
+            duration = timeInterveral(for: selectedHourIndex, minute: selectedMinIndex, second: selectedSecIndex)
+        }
+        
         return pickerView
     }
     
@@ -180,7 +189,7 @@ struct CountdownPicker: UIViewRepresentable {
             let minuteIndex = pickerView.selectedRow(inComponent: 1)
             let secondIndex = pickerView.selectedRow(inComponent: 2)
             
-            parent.duration = TimeInterval(pickerData[0][hourIndex]*60*60 + pickerData[1][minuteIndex]*60 + pickerData[2][secondIndex])
+            parent.duration = parent.timeInterveral(for: pickerData[0][hourIndex], minute:pickerData[1][minuteIndex], second: pickerData[2][secondIndex])
             parent.selectedHourIndex = pickerView.selectedRow(inComponent: 0)
             parent.selectedMinIndex = pickerView.selectedRow(inComponent: 1)
             parent.selectedSecIndex = pickerView.selectedRow(inComponent: 2)

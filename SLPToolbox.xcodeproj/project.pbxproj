@@ -10,6 +10,8 @@
 		4420F112294EBDB600719C32 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420F111294EBDB600719C32 /* TimerView.swift */; };
 		443641FE294850C400E03A90 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443641FD294850C400E03A90 /* RootView.swift */; };
 		4465663C29551D1600BA31B0 /* AdaptiveStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465663B29551D1600BA31B0 /* AdaptiveStack.swift */; };
+		4465663F29552D1D00BA31B0 /* AgeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465663E29552D1D00BA31B0 /* AgeCalculatorView.swift */; };
+		446566422955667000BA31B0 /* DateCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446566412955667000BA31B0 /* DateCalculatorView.swift */; };
 		446AE4AD295113DA00878647 /* CountdownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4AC295113DA00878647 /* CountdownPicker.swift */; };
 		446AE4B1295416DC00878647 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B0295416DC00878647 /* CountdownView.swift */; };
 		446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B22954BD0A00878647 /* TimerModel.swift */; };
@@ -27,6 +29,8 @@
 		4420F111294EBDB600719C32 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		443641FD294850C400E03A90 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		4465663B29551D1600BA31B0 /* AdaptiveStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveStack.swift; sourceTree = "<group>"; };
+		4465663E29552D1D00BA31B0 /* AgeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeCalculatorView.swift; sourceTree = "<group>"; };
+		446566412955667000BA31B0 /* DateCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculatorView.swift; sourceTree = "<group>"; };
 		446AE4AC295113DA00878647 /* CountdownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownPicker.swift; sourceTree = "<group>"; };
 		446AE4B0295416DC00878647 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		446AE4B22954BD0A00878647 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
@@ -54,6 +58,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4465663D29552D0100BA31B0 /* Age Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				4465663E29552D1D00BA31B0 /* AgeCalculatorView.swift */,
+			);
+			path = "Age Calculator";
+			sourceTree = "<group>";
+		};
+		446566402955665B00BA31B0 /* Date Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				446566412955667000BA31B0 /* DateCalculatorView.swift */,
+			);
+			path = "Date Calculator";
+			sourceTree = "<group>";
+		};
 		446A2816294D8E7C00DD14E4 /* UnusedViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +128,8 @@
 				443641FD294850C400E03A90 /* RootView.swift */,
 				446AE4AE2953D85700878647 /* Data Tracker */,
 				446AE4AF2953D86200878647 /* Timer */,
+				4465663D29552D0100BA31B0 /* Age Calculator */,
+				446566402955665B00BA31B0 /* Date Calculator */,
 				447BBE462947BAEF002D4DCA /* Assets.xcassets */,
 				447BBE4B2947BAEF002D4DCA /* Persistence.swift */,
 				447BBE502947BAEF002D4DCA /* Info.plist */,
@@ -198,6 +220,8 @@
 				446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */,
 				447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */,
 				4465663C29551D1600BA31B0 /* AdaptiveStack.swift in Sources */,
+				4465663F29552D1D00BA31B0 /* AgeCalculatorView.swift in Sources */,
+				446566422955667000BA31B0 /* DateCalculatorView.swift in Sources */,
 				447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */,
 				447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */,
 				447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */,

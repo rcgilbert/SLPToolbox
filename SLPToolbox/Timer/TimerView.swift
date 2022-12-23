@@ -12,7 +12,6 @@ import SwiftUI
 // TODO: Add Ability to choose alarm sound, etc.
 struct TimerView: View {
     @Environment(\.verticalSizeClass) var sizeClass
-    @State var countdownDuration: TimeInterval = 0
     @StateObject var timerModel: TimerModel = TimerModel()
     
     var body: some View {
@@ -78,6 +77,7 @@ struct TimerView: View {
         }
         .onAppear {
             timerModel.requestNotificationPermissions()
+            
         }
     }
 }

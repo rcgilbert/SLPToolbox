@@ -88,7 +88,7 @@ import UserNotifications
         content.interruptionLevel = .critical
         
         let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: endDate)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
         
