@@ -15,6 +15,7 @@
 		446AE4AD295113DA00878647 /* CountdownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4AC295113DA00878647 /* CountdownPicker.swift */; };
 		446AE4B1295416DC00878647 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B0295416DC00878647 /* CountdownView.swift */; };
 		446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B22954BD0A00878647 /* TimerModel.swift */; };
+		446E6DFC2956512B000CA0A1 /* GaugeProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E6DFB2956512B000CA0A1 /* GaugeProgressStyle.swift */; };
 		447BBE432947BAEC002D4DCA /* SLPToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */; };
 		447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE442947BAEC002D4DCA /* DataTrackView.swift */; };
 		447BBE472947BAEF002D4DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 447BBE462947BAEF002D4DCA /* Assets.xcassets */; };
@@ -34,6 +35,8 @@
 		446AE4AC295113DA00878647 /* CountdownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownPicker.swift; sourceTree = "<group>"; };
 		446AE4B0295416DC00878647 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		446AE4B22954BD0A00878647 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		446E6DF929562CDD000CA0A1 /* SLPToolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SLPToolbox.entitlements; sourceTree = "<group>"; };
+		446E6DFB2956512B000CA0A1 /* GaugeProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeProgressStyle.swift; sourceTree = "<group>"; };
 		447BBE3F2947BAEC002D4DCA /* SLPToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLPToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPToolboxApp.swift; sourceTree = "<group>"; };
 		447BBE442947BAEC002D4DCA /* DataTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTrackView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,14 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
+		446E6DFA29565110000CA0A1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				446E6DFB2956512B000CA0A1 /* GaugeProgressStyle.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		447BBE362947BAEC002D4DCA = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +133,9 @@
 		447BBE412947BAEC002D4DCA /* SLPToolbox */ = {
 			isa = PBXGroup;
 			children = (
+				446E6DF929562CDD000CA0A1 /* SLPToolbox.entitlements */,
 				446A2816294D8E7C00DD14E4 /* UnusedViews */,
+				446E6DFA29565110000CA0A1 /* Utilities */,
 				447BBE562947C35F002D4DCA /* HelperExtensions.swift */,
 				447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */,
 				443641FD294850C400E03A90 /* RootView.swift */,
@@ -220,6 +233,7 @@
 				446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */,
 				447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */,
 				4465663C29551D1600BA31B0 /* AdaptiveStack.swift in Sources */,
+				446E6DFC2956512B000CA0A1 /* GaugeProgressStyle.swift in Sources */,
 				4465663F29552D1D00BA31B0 /* AgeCalculatorView.swift in Sources */,
 				446566422955667000BA31B0 /* DateCalculatorView.swift in Sources */,
 				447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */,
@@ -356,12 +370,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SLPToolbox/SLPToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SLPToolbox/Preview Content\"";
 				DEVELOPMENT_TEAM = BR8CHTSE9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SLPToolbox/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -372,7 +388,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SimpleTx;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SLPToolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -385,12 +401,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SLPToolbox/SLPToolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SLPToolbox/Preview Content\"";
 				DEVELOPMENT_TEAM = BR8CHTSE9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SLPToolbox/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -401,7 +419,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SimpleTx;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SLPToolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

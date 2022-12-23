@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct DataRowCellView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.undoManager) private var undoManager
@@ -14,63 +16,62 @@ struct DataRowCellView: View {
     @ObservedObject var dataRow: DataRow
     
     var body: some View {
-        VStack(alignment: .center, spacing: 16) {
+        VStack {
             TextField("Data Title", text: $dataRow.wrappedName, prompt: Text("Enter Text"))
-                .font(.title)
+                .font(.title2)
                 .textFieldStyle(.roundedBorder)
                 .submitLabel(.done)
-            
+                .multilineTextAlignment(.leading)
+                .padding()
             HStack {
-                Spacer()
-                HStack {
-                    VStack {
-                        Text("Correct")
-                            .font(.headline)
-                            .frame(minWidth: 50)
-                        Text(NSNumber(value: dataRow.correctCount), formatter: countFormatter)
-                            .font(.title)
-                            .frame(minWidth: 50)
-                        Button {
-                            dataRow.correctCount += 1
-                            save()
-                        } label: {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.green)
-                        }
+                ProgressView(value: dataRow.percentageCorrect) {
+                    VStack(alignment: .center, spacing: 8) {
+                        Text(dataRow.percentageCorrectString)
+                            .font(.largeTitle)
+                            .multilineTextAlignment(.center)
+                        Text("\(dataRow.correctCountString) / \(dataRow.totalString)")
+                            .font(.title3)
+                            .multilineTextAlignment(.center)
+                    }
+                }.progressViewStyle(
+                    GaugeProgressStyle(stroke: .angularGradient(colors: [.yellow, .orange, .red, .orange, .yellow],
+                                                                center: .center,
+                                                                startAngle: .degrees(0),
+                                                                endAngle: .degrees(360)),
+                                       strokeWidth: 10)
+                )
+                .padding()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: 150, height: 150)
+                .scaledToFit()
+                VStack(alignment: .trailing, spacing: 16) {
+                    Button {
+                        dataRow.correctCount += 1
+                        save()
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fit)
+                            .frame(idealWidth: 50, idealHeight: 50)
+                            .foregroundColor(.green)
+                    }
+                    Spacer()
+                    Button {
+                        dataRow.incorrectCount += 1
+                        save()
+                    } label: {
+                        Image(systemName: "minus.circle.fill")
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fit)
+                            .frame(idealWidth: 50, idealHeight: 50)
+                            .foregroundColor(.red)
                     }
                 }
-                Spacer()
-                HStack {
-                    VStack {
-                        Text("Incorrect")
-                            .font(.headline)
-                            .frame(minWidth: 50)
-                         Text(NSNumber(value: dataRow.incorrectCount), formatter: countFormatter)
-                             .font(.title)
-                             .frame(minWidth: 50)
-                        Button {
-                            dataRow.incorrectCount += 1
-                            save()
-                        } label: {
-                            Image(systemName: "minus.circle.fill")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.red)
-                        }
-                    }
-                }
-                Spacer()
+                .padding()
+                .onChange(of: dataRow.name) { _ in
+                    save()
             }
-            VStack(alignment: .center) {
-                Text("\(dataRow.correctCountString) / \(dataRow.totalString) _=_ \(dataRow.percentageCorrectString)")
-                    .font(.title3)
             }
-        }
-        .padding()
-        .onChange(of: dataRow.name) { _ in
-            save()
         }
     }
     

@@ -38,9 +38,9 @@ struct RootView: View {
                     NavigationLink(value: Screen.dateCalculator) {
                         Label("Date Calculator", systemImage: "calendar")
                     }
-                    NavigationLink(value: Screen.notes) {
-                        Label("Notes", systemImage: "note.text")
-                    }
+//                    NavigationLink(value: Screen.notes) {
+//                        Label("Notes", systemImage: "note.text")
+//                    }
                 }
                 Section {
                     NavigationLink(value: Screen.settings) {
