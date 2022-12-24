@@ -34,7 +34,8 @@ struct DataRowCellView: View {
                             .multilineTextAlignment(.center)
                     }
                 }.progressViewStyle(
-                    GaugeProgressStyle(stroke: .angularGradient(colors: [.yellow, .orange, .red, .orange, .yellow],
+                    GaugeProgressStyle(stroke: .angularGradient(colors: [.yellow, .orange,
+                                                                         .red, .orange, .yellow],
                                                                 center: .center,
                                                                 startAngle: .degrees(0),
                                                                 endAngle: .degrees(360)),

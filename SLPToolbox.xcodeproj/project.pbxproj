@@ -16,6 +16,11 @@
 		446AE4B1295416DC00878647 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B0295416DC00878647 /* CountdownView.swift */; };
 		446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446AE4B22954BD0A00878647 /* TimerModel.swift */; };
 		446E6DFC2956512B000CA0A1 /* GaugeProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E6DFB2956512B000CA0A1 /* GaugeProgressStyle.swift */; };
+		446E6DFE295671D4000CA0A1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446E6DFD295671D4000CA0A1 /* Colors.xcassets */; };
+		446E6E0029567305000CA0A1 /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E6DFF29567305000CA0A1 /* Theming.swift */; };
+		446E6E03295677E2000CA0A1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E6E02295677E2000CA0A1 /* SettingsView.swift */; };
+		446E6E0529569EDE000CA0A1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E6E0429569EDE000CA0A1 /* AboutView.swift */; };
+		446E6E072956BF77000CA0A1 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E6E062956BF77000CA0A1 /* AppSettings.swift */; };
 		447BBE432947BAEC002D4DCA /* SLPToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */; };
 		447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE442947BAEC002D4DCA /* DataTrackView.swift */; };
 		447BBE472947BAEF002D4DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 447BBE462947BAEF002D4DCA /* Assets.xcassets */; };
@@ -37,6 +42,11 @@
 		446AE4B22954BD0A00878647 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		446E6DF929562CDD000CA0A1 /* SLPToolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SLPToolbox.entitlements; sourceTree = "<group>"; };
 		446E6DFB2956512B000CA0A1 /* GaugeProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeProgressStyle.swift; sourceTree = "<group>"; };
+		446E6DFD295671D4000CA0A1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		446E6DFF29567305000CA0A1 /* Theming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
+		446E6E02295677E2000CA0A1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		446E6E0429569EDE000CA0A1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		446E6E062956BF77000CA0A1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		447BBE3F2947BAEC002D4DCA /* SLPToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLPToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPToolboxApp.swift; sourceTree = "<group>"; };
 		447BBE442947BAEC002D4DCA /* DataTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTrackView.swift; sourceTree = "<group>"; };
@@ -109,9 +119,21 @@
 		446E6DFA29565110000CA0A1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				447BBE562947C35F002D4DCA /* HelperExtensions.swift */,
 				446E6DFB2956512B000CA0A1 /* GaugeProgressStyle.swift */,
+				446E6DFF29567305000CA0A1 /* Theming.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		446E6E01295677D4000CA0A1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				446E6E062956BF77000CA0A1 /* AppSettings.swift */,
+				446E6E02295677E2000CA0A1 /* SettingsView.swift */,
+				446E6E0429569EDE000CA0A1 /* AboutView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		447BBE362947BAEC002D4DCA = {
@@ -136,13 +158,14 @@
 				446E6DF929562CDD000CA0A1 /* SLPToolbox.entitlements */,
 				446A2816294D8E7C00DD14E4 /* UnusedViews */,
 				446E6DFA29565110000CA0A1 /* Utilities */,
-				447BBE562947C35F002D4DCA /* HelperExtensions.swift */,
 				447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */,
 				443641FD294850C400E03A90 /* RootView.swift */,
+				446E6DFD295671D4000CA0A1 /* Colors.xcassets */,
 				446AE4AE2953D85700878647 /* Data Tracker */,
 				446AE4AF2953D86200878647 /* Timer */,
 				4465663D29552D0100BA31B0 /* Age Calculator */,
 				446566402955665B00BA31B0 /* Date Calculator */,
+				446E6E01295677D4000CA0A1 /* Settings */,
 				447BBE462947BAEF002D4DCA /* Assets.xcassets */,
 				447BBE4B2947BAEF002D4DCA /* Persistence.swift */,
 				447BBE502947BAEF002D4DCA /* Info.plist */,
@@ -218,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446E6DFE295671D4000CA0A1 /* Colors.xcassets in Resources */,
 				447BBE4A2947BAEF002D4DCA /* Preview Assets.xcassets in Resources */,
 				447BBE472947BAEF002D4DCA /* Assets.xcassets in Resources */,
 			);
@@ -231,9 +255,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */,
+				446E6E072956BF77000CA0A1 /* AppSettings.swift in Sources */,
 				447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */,
 				4465663C29551D1600BA31B0 /* AdaptiveStack.swift in Sources */,
 				446E6DFC2956512B000CA0A1 /* GaugeProgressStyle.swift in Sources */,
+				446E6E0529569EDE000CA0A1 /* AboutView.swift in Sources */,
+				446E6E0029567305000CA0A1 /* Theming.swift in Sources */,
+				446E6E03295677E2000CA0A1 /* SettingsView.swift in Sources */,
 				4465663F29552D1D00BA31B0 /* AgeCalculatorView.swift in Sources */,
 				446566422955667000BA31B0 /* DateCalculatorView.swift in Sources */,
 				447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */,

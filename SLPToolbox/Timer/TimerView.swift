@@ -38,12 +38,14 @@ struct TimerView: View {
                             .overlay(
                                 Circle()
                                     .stroke(Color(uiColor: UIColor.systemBackground).opacity(0.8), lineWidth: 2)
-                                    .frame(width: 70, height: 70, alignment: .center)
+                                    .frame(width: 75, height: 75, alignment: .center)
                             )
+
                             Text("Cancel")
                                 .foregroundColor(.white)
-                                .opacity(timerModel.isTimerRunning ? 1.0: 0.5)
-                    }
+                                .fontWeight(.medium)
+                                
+                    }.opacity(timerModel.isTimerRunning ? 1.0: 0.5)
                 }
                 .disabled(!timerModel.isTimerRunning)
                 Spacer()
@@ -65,19 +67,22 @@ struct TimerView: View {
                             .overlay(
                                 Circle()
                                     .stroke(Color(uiColor: UIColor.systemBackground).opacity(0.8), lineWidth: 2)
-                                    .frame(width: 70, height: 70, alignment: .center)
+                                    .frame(width: 75, height: 75, alignment: .center)
                             )
                         Text(timerModel.isTimerRunning ? (timerModel.isTimerPaused ? "Resume" : "Pause"): "Start")
-                            .foregroundStyle(.thickMaterial)
+                            .foregroundColor(.white)
+                            .fontWeight(.medium)
+                            .opacity(0.8)
+                            .blendMode(.lighten)
                     }
                 }
                 .disabled(timerModel.timeRemaining == 0 || timerModel.isTimerEnded)
+                .opacity(timerModel.timeRemaining == 0 || timerModel.isTimerEnded ? 0.5: 1.0)
             }.padding([.leading, .trailing], 40)
             Spacer()
         }
         .onAppear {
             timerModel.requestNotificationPermissions()
-            
         }
     }
 }

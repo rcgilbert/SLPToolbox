@@ -24,33 +24,49 @@ struct RootView: View {
     
     var body: some View {
         NavigationSplitView {
-            List(selection: $selectedScreen) {
-                Section {
-                    NavigationLink(value: Screen.dataTracker) {
-                        Label("Data Tracker", systemImage: "list.bullet.clipboard")
+            ScrollView {
+                LazyVGrid(columns: [GridItem(spacing: 16), GridItem()]) {
+                    Button {
+                        selectedScreen = .dataTracker
+                    } label: {
+                        NavCellView(title: "Data Tracker",
+                                    systemImageName: "list.bullet.clipboard",
+                                    color: .orangeish)
                     }
-                    NavigationLink(value: Screen.timer) {
-                        Label("Timer", systemImage: "timer.circle")
+                    Button {
+                        selectedScreen = .timer
+                    } label: {
+                        NavCellView(title: "Timer",
+                                    systemImageName: "timer.circle",
+                                    color: .brightPink)
                     }
-                    NavigationLink(value: Screen.ageCalculator) {
-                        Label("Age Calculator", systemImage: "number.square")
+                    Button {
+                        selectedScreen = .ageCalculator
+                    } label: {
+                        NavCellView(title: "Age Calculator",
+                                    systemImageName: "number.square",
+                                    color: .purpleish)
                     }
-                    NavigationLink(value: Screen.dateCalculator) {
-                        Label("Date Calculator", systemImage: "calendar")
+                    Button {
+                        selectedScreen = .dateCalculator
+                    } label: {
+                        NavCellView(title: "Date Calulator",
+                                    systemImageName: "calendar",
+                                    color: .greenish)
                     }
-//                    NavigationLink(value: Screen.notes) {
-//                        Label("Notes", systemImage: "note.text")
-//                    }
-                }
-                Section {
-                    NavigationLink(value: Screen.settings) {
-                        Label("Settings", systemImage: "gearshape")
-                            .symbolRenderingMode(.multicolor)
+                    Button {
+                        selectedScreen = .settings
+                    } label: {
+                        NavCellView(title: "Settings",
+                                    systemImageName: "gearshape",
+                                    color: .grayish)
                     }
-                }
+                }.padding()
             }
-            .listStyle(.insetGrouped)
             .navigationTitle("SLP Toolbox")
+            
+            List(selection: $selectedScreen) { }
+                .frame(height: 0)
         } detail: {
             switch selectedScreen {
             case .dataTracker, .none:
@@ -69,7 +85,7 @@ struct RootView: View {
                 Text("Notes Placeholder!")
                     .navigationTitle("Notes")
             case .settings:
-                Text("Settings Placeholder!")
+                SettingsView()
                     .navigationTitle("Settings")
            
             }
@@ -87,5 +103,35 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
+    }
+}
+
+struct NavCellView: View {
+    @State var title: String
+    @State var systemImageName: String
+    @State var color: Color = .orangeish
+   
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
+                .foregroundColor(color)
+                .aspectRatio(1.2, contentMode: .fit)
+                .shadow(radius: 3, x: 3, y: 3)
+            VStack(spacing: 16) {
+                Image(systemName: systemImageName)
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(height: 32)
+                    .foregroundColor(.white)
+                
+                Text(title)
+                    .foregroundColor(.white)
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .padding([.leading, .trailing], 8)
+            }
+        }
     }
 }
