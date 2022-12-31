@@ -90,7 +90,7 @@ struct TimerView: View {
                     Button {
                         timerModel.resume()
                     } label: {
-                        CircleButtonView(color: .orange, label: "Pause")
+                        CircleButtonView(color: .orange, label: "Resume")
                     }
                 case .ended:
                     cancelButton
