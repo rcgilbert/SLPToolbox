@@ -8,65 +8,50 @@
 import Foundation
 import SwiftUI
 import UserNotifications
-
+ 
 @MainActor final class TimerModel: ObservableObject {
-    @Published var isTimerRunning: Bool = false
-    @Published var isTimerEnded: Bool = false
-    @Published var isTimerPaused: Bool = false
-    @Published var endDate: Date = .distantFuture
-    @Published var timeRemaining: TimeInterval = 0
-    @Published var startDate: Date = .now
+    enum TimerState {
+        case inactive
+        case running(endDate: Date)
+        case paused(timeRemaining: TimeInterval)
+        case ended(endDate: Date)
+    }
     
-    private var updateTimer: Timer?
+    public static let NotificationID = "SLPToolbox.Timer"
+    public static let NotificationEndDateUserInfoKey = "Timer.EndDate"
     
-    private let notificationID = "SLPToolbox.Timer"
+    @Published var timerState: TimerState = .inactive
     
-    func start() {
-        startDate = .now
-        endDate = Date.now.addingTimeInterval(timeRemaining)
-        isTimerRunning = true
-        isTimerPaused = false
+    func start(withDuration duration: TimeInterval) {
+        timerState = .running(endDate: .init(timeIntervalSinceNow: duration))
         
         scheduleTimerNotication()
-        updateTimer = .scheduledTimer(timeInterval: 1, target: self, selector: #selector(didUpdate), userInfo: nil, repeats: true)
     }
     
     func resume() {
-        endDate = Date.now.addingTimeInterval(timeRemaining)
-        isTimerRunning = true
-        isTimerPaused = false
-        
-        scheduleTimerNotication()
-        updateTimer = .scheduledTimer(timeInterval: 1, target: self, selector: #selector(didUpdate), userInfo: nil, repeats: true)
-    }
-    
-    func pause() {
-        timeRemaining = endDate.timeIntervalSinceNow
-        isTimerPaused = true
-        
-        removeTimerNotification()
-        updateTimer?.invalidate()
-    }
-    
-    func stop() {
-        isTimerRunning = false
-        isTimerEnded = false
-        isTimerPaused = false
-        timeRemaining = 0
-        endDate = .now
-        
-        removeTimerNotification()
-        updateTimer?.invalidate()
-    }
-    
-    @objc private func didUpdate(_ timer: Timer) {
-        guard isTimerRunning, !isTimerPaused, !isTimerEnded else {
-            timer.invalidate()
+        guard case let .paused(timerRemaining) = timerState else {
             return
         }
         
-        timeRemaining = endDate.timeIntervalSinceNow
-        isTimerEnded = timeRemaining <= 0
+        timerState = .running(endDate: .init(timeIntervalSinceNow: timerRemaining))
+        
+        scheduleTimerNotication()
+    }
+    
+    func pause() {
+        guard case let .running(endDate) = timerState else {
+            return
+        }
+        
+        timerState = .paused(timeRemaining: endDate.timeIntervalSinceNow)
+        
+        removeTimerNotification()
+    }
+    
+    func cancel() {
+        timerState = .inactive
+        
+        removeTimerNotification()
     }
     
     func requestNotificationPermissions() {
@@ -78,6 +63,10 @@ import UserNotifications
     }
     
     private func scheduleTimerNotication() {
+        guard case let .running(endDate) = timerState else {
+            return
+        }
+        
         removeTimerNotification()
         
         let content = UNMutableNotificationContent()
@@ -86,17 +75,18 @@ import UserNotifications
         content.categoryIdentifier = "SLPToolbox.Timer.CountdownComplete"
         content.sound = UNNotificationSound.defaultCritical
         content.interruptionLevel = .critical
+        content.userInfo = [Self.NotificationEndDateUserInfoKey: endDate]
         
         let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: endDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: Self.NotificationID, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
     }
     
     private func removeTimerNotification() {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
-        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [notificationID])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [Self.NotificationID])
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [Self.NotificationID])
     }
 }

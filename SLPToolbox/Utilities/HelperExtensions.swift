@@ -33,6 +33,16 @@ extension DataTrack {
 
 }
 
+extension Bundle {
+    var versionString: String? {
+        infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    
+    var buildNumberString: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
+    }
+}
+
 extension DataRow {
     var total: Int {
         Int(incorrectCount + correctCount)

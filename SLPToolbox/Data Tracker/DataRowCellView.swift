@@ -14,9 +14,9 @@ struct DataRowCellView: View {
     @Environment(\.undoManager) private var undoManager
     
     @ObservedObject var dataRow: DataRow
-    
     var body: some View {
         VStack {
+            
             TextField("Data Title", text: $dataRow.wrappedName, prompt: Text("Enter Text"))
                 .font(.title2)
                 .textFieldStyle(.roundedBorder)
@@ -34,8 +34,7 @@ struct DataRowCellView: View {
                             .multilineTextAlignment(.center)
                     }
                 }.progressViewStyle(
-                    GaugeProgressStyle(stroke: .angularGradient(colors: [.yellow, .orange,
-                                                                         .red, .orange, .yellow],
+                    GaugeProgressStyle(stroke: .angularGradient(colors: colorsFor(percentageCorrect: dataRow.percentageCorrect),
                                                                 center: .center,
                                                                 startAngle: .degrees(0),
                                                                 endAngle: .degrees(360)),
@@ -73,6 +72,20 @@ struct DataRowCellView: View {
                     save()
             }
             }
+        }
+    }
+    
+    private func colorsFor(percentageCorrect: Double) -> [Color] {
+        switch percentageCorrect {
+        case 0.8...1:
+            return [.green, Color(uiColor: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)), .green]
+        case 0.6..<0.8:
+            return [.yellow, Color(uiColor: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)), .yellow]
+        case 0.0..<0.6:
+            return [Color(uiColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)), .orange, Color(uiColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))]
+        default:
+            return []
+            
         }
     }
     

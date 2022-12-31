@@ -15,14 +15,25 @@ struct SettingsView: View {
         case facebook
         case pinterest
         case website
+        
+        var url: URL! {
+            switch self {
+            case .website:
+                return URL(string: "https://www.speechieadventures.com/")
+            case .instagram:
+                return URL(string: "https://www.instagram.com/speechieadventures")
+            case .facebook:
+                return URL(string: "https://www.facebook.com/speechieadventures")
+            case .pinterest:
+                return URL(string: "https://www.pinterest.com/speechieadventures/")
+            }
+        }
     }
     
     var body: some View {
         Form {
             Section("Socials") {
-                Button {
-                    openSocial(.instagram)
-                } label: {
+                Link(destination: Social.instagram.url) {
                     Label {
                         Text("Instagram")
                     } icon: {
@@ -32,9 +43,7 @@ struct SettingsView: View {
                             .padding(2)
                     }
                 }
-                Button {
-                    openSocial(.facebook)
-                } label: {
+                Link(destination: Social.facebook.url) {
                     Label {
                         Text("Facebook")
                     } icon: {
@@ -44,9 +53,7 @@ struct SettingsView: View {
                             .padding(2)
                     }
                 }
-                Button {
-                    openSocial(.pinterest)
-                } label: {
+                Link(destination: Social.pinterest.url) {
                     Label {
                         Text("Pinterest")
                     } icon: {
@@ -56,9 +63,7 @@ struct SettingsView: View {
                             .padding(2)
                     }
                 }
-                Button {
-                    openSocial(.website)
-                } label: {
+                Link(destination: Social.website.url) {
                     Label("Speechie Adventures", systemImage: "globe")
                 }
 
@@ -70,9 +75,7 @@ struct SettingsView: View {
                     Label("About", systemImage: "info.circle")
                 }
 
-                Button {
-                    openMail()
-                } label: {
+                Link(destination: getMailURL()) {
                     Label("Contact", systemImage: "envelope")
                 }
             }
@@ -81,30 +84,8 @@ struct SettingsView: View {
         }
     }
     
-    private func openMail() {
-        guard let url = URL(string: "mailto:slptoolbox@speechieadventures.com?subject=%5BSLPToolbox%5D&body=%5B%5D") else {
-            assertionFailure("Mail URL broken!")
-            return
-        }
-        UIApplication.shared.open(url)
-    }
-    
-    private func openSocial(_ social: Social) {
-        var url: URL?
-        switch social {
-        case .facebook:
-            url = URL(string: "https://www.facebook.com/speechieadventures")
-        case .instagram:
-            url = URL(string: "https://www.instagram.com/speechieadventures")
-        case .pinterest:
-            url = URL(string: "https://www.pinterest.com/speechieadventures/")
-        case .website:
-            url = URL(string: "https://www.speechieadventures.com/")
-        }
-        
-        if let url = url {
-            UIApplication.shared.open(url)
-        }
+    private func getMailURL() -> URL! {
+        URL(string: "mailto:slptoolbox@speechieadventures.com?subject=%5BSLPToolbox%5D&body=%5B%5D")!
     }
 }
 

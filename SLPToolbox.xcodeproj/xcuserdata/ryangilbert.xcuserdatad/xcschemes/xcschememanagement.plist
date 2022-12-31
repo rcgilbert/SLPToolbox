@@ -14,6 +14,24 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TimerExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>447BBE3E2947BAEC002D4DCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44BB0339295A6C8C00CE1E31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

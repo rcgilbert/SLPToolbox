@@ -29,7 +29,41 @@
 		447BBE4F2947BAEF002D4DCA /* SLPToolbox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE4D2947BAEF002D4DCA /* SLPToolbox.xcdatamodeld */; };
 		447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE562947C35F002D4DCA /* HelperExtensions.swift */; };
 		447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE582947D543002D4DCA /* DataRowCellView.swift */; };
+		44BB033D295A6C8C00CE1E31 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BB033C295A6C8C00CE1E31 /* WidgetKit.framework */; };
+		44BB033F295A6C8C00CE1E31 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BB033E295A6C8C00CE1E31 /* SwiftUI.framework */; };
+		44BB0342295A6C8C00CE1E31 /* TimerBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0341295A6C8C00CE1E31 /* TimerBundle.swift */; };
+		44BB0344295A6C8C00CE1E31 /* TimerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0343295A6C8C00CE1E31 /* TimerLiveActivity.swift */; };
+		44BB0346295A6C8C00CE1E31 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0345295A6C8C00CE1E31 /* Timer.swift */; };
+		44BB0349295A6C8E00CE1E31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB0348295A6C8E00CE1E31 /* Assets.xcassets */; };
+		44BB034B295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */; };
+		44BB034C295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */; };
+		44BB034F295A6C8E00CE1E31 /* TimerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 44BB033A295A6C8C00CE1E31 /* TimerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		44BB035C295E970C00CE1E31 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035B295E970C00CE1E31 /* AppState.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44BB034D295A6C8E00CE1E31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 447BBE372947BAEC002D4DCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44BB0339295A6C8C00CE1E31;
+			remoteInfo = TimerExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		44BB0350295A6C8E00CE1E31 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				44BB034F295A6C8E00CE1E31 /* TimerExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4420F111294EBDB600719C32 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -58,6 +92,16 @@
 		447BBE562947C35F002D4DCA /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		447BBE582947D543002D4DCA /* DataRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRowCellView.swift; sourceTree = "<group>"; };
 		448A3317294D7A6500403669 /* DataTracksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTracksListView.swift; sourceTree = "<group>"; };
+		44BB033A295A6C8C00CE1E31 /* TimerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BB033C295A6C8C00CE1E31 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		44BB033E295A6C8C00CE1E31 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		44BB0341295A6C8C00CE1E31 /* TimerBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBundle.swift; sourceTree = "<group>"; };
+		44BB0343295A6C8C00CE1E31 /* TimerLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLiveActivity.swift; sourceTree = "<group>"; };
+		44BB0345295A6C8C00CE1E31 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Timer.intentdefinition; sourceTree = "<group>"; };
+		44BB0348295A6C8E00CE1E31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		44BB034A295A6C8E00CE1E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44BB035B295E970C00CE1E31 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +109,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44BB0337295A6C8C00CE1E31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BB033F295A6C8C00CE1E31 /* SwiftUI.framework in Frameworks */,
+				44BB033D295A6C8C00CE1E31 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				447BBE412947BAEC002D4DCA /* SLPToolbox */,
+				44BB0340295A6C8C00CE1E31 /* Timer Activity */,
+				44BB033B295A6C8C00CE1E31 /* Frameworks */,
 				447BBE402947BAEC002D4DCA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -148,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				447BBE3F2947BAEC002D4DCA /* SLPToolbox.app */,
+				44BB033A295A6C8C00CE1E31 /* TimerExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +215,7 @@
 				446A2816294D8E7C00DD14E4 /* UnusedViews */,
 				446E6DFA29565110000CA0A1 /* Utilities */,
 				447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */,
+				44BB035B295E970C00CE1E31 /* AppState.swift */,
 				443641FD294850C400E03A90 /* RootView.swift */,
 				446E6DFD295671D4000CA0A1 /* Colors.xcassets */,
 				446AE4AE2953D85700878647 /* Data Tracker */,
@@ -183,6 +240,28 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		44BB033B295A6C8C00CE1E31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44BB033C295A6C8C00CE1E31 /* WidgetKit.framework */,
+				44BB033E295A6C8C00CE1E31 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		44BB0340295A6C8C00CE1E31 /* Timer Activity */ = {
+			isa = PBXGroup;
+			children = (
+				44BB0341295A6C8C00CE1E31 /* TimerBundle.swift */,
+				44BB0343295A6C8C00CE1E31 /* TimerLiveActivity.swift */,
+				44BB0345295A6C8C00CE1E31 /* Timer.swift */,
+				44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */,
+				44BB0348295A6C8E00CE1E31 /* Assets.xcassets */,
+				44BB034A295A6C8E00CE1E31 /* Info.plist */,
+			);
+			path = "Timer Activity";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,15 +272,34 @@
 				447BBE3B2947BAEC002D4DCA /* Sources */,
 				447BBE3C2947BAEC002D4DCA /* Frameworks */,
 				447BBE3D2947BAEC002D4DCA /* Resources */,
+				44BB0350295A6C8E00CE1E31 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				44BB034E295A6C8E00CE1E31 /* PBXTargetDependency */,
 			);
 			name = SLPToolbox;
 			productName = SimpleTx;
 			productReference = 447BBE3F2947BAEC002D4DCA /* SLPToolbox.app */;
 			productType = "com.apple.product-type.application";
+		};
+		44BB0339295A6C8C00CE1E31 /* TimerExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44BB0353295A6C8E00CE1E31 /* Build configuration list for PBXNativeTarget "TimerExtension" */;
+			buildPhases = (
+				44BB0336295A6C8C00CE1E31 /* Sources */,
+				44BB0337295A6C8C00CE1E31 /* Frameworks */,
+				44BB0338295A6C8C00CE1E31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimerExtension;
+			productName = TimerExtension;
+			productReference = 44BB033A295A6C8C00CE1E31 /* TimerExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -210,11 +308,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					447BBE3E2947BAEC002D4DCA = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					44BB0339295A6C8C00CE1E31 = {
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -232,6 +333,7 @@
 			projectRoot = "";
 			targets = (
 				447BBE3E2947BAEC002D4DCA /* SLPToolbox */,
+				44BB0339295A6C8C00CE1E31 /* TimerExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -247,6 +349,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44BB0338295A6C8C00CE1E31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BB0349295A6C8E00CE1E31 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -254,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44BB034C295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */,
 				446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */,
 				446E6E072956BF77000CA0A1 /* AppSettings.swift in Sources */,
 				447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */,
@@ -268,6 +379,7 @@
 				447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */,
 				447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */,
 				443641FE294850C400E03A90 /* RootView.swift in Sources */,
+				44BB035C295E970C00CE1E31 /* AppState.swift in Sources */,
 				447BBE432947BAEC002D4DCA /* SLPToolboxApp.swift in Sources */,
 				446AE4B1295416DC00878647 /* CountdownView.swift in Sources */,
 				4420F112294EBDB600719C32 /* TimerView.swift in Sources */,
@@ -276,7 +388,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44BB0336295A6C8C00CE1E31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BB034B295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */,
+				44BB0346295A6C8C00CE1E31 /* Timer.swift in Sources */,
+				44BB0344295A6C8C00CE1E31 /* TimerLiveActivity.swift in Sources */,
+				44BB0342295A6C8C00CE1E31 /* TimerBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44BB034E295A6C8E00CE1E31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44BB0339295A6C8C00CE1E31 /* TimerExtension */;
+			targetProxy = 44BB034D295A6C8E00CE1E31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		447BBE512947BAEF002D4DCA /* Debug */ = {
@@ -396,6 +527,7 @@
 		447BBE542947BAEF002D4DCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SLPToolbox/SLPToolbox.entitlements;
@@ -406,7 +538,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SLPToolbox/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SLP Toolbox";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -427,6 +561,7 @@
 		447BBE552947BAEF002D4DCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SLPToolbox/SLPToolbox.entitlements;
@@ -437,7 +572,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SLPToolbox/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SLP Toolbox";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -449,6 +586,62 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SLPToolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		44BB0351295A6C8E00CE1E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Timer Activity/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Timer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SLPToolbox.Timer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		44BB0352295A6C8E00CE1E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Timer Activity/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Timer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SLPToolbox.Timer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,6 +665,15 @@
 			buildConfigurations = (
 				447BBE542947BAEF002D4DCA /* Debug */,
 				447BBE552947BAEF002D4DCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44BB0353295A6C8E00CE1E31 /* Build configuration list for PBXNativeTarget "TimerExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44BB0351295A6C8E00CE1E31 /* Debug */,
+				44BB0352295A6C8E00CE1E31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

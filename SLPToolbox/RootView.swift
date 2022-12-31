@@ -9,53 +9,42 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-    enum Screen: Int {
-        case dataTracker
-        case timer
-        case ageCalculator
-        case dateCalculator
-        case notes
-        case settings
-    }
-    
-    @State var selectedScreen: Screen? = .dataTracker
-    @AppStorage("selectedScreenIndex") var selectedScreenIndex: Int = Screen.dataTracker.rawValue
-    
+    @EnvironmentObject private var appState: AppState
+   
     var body: some View {
         NavigationSplitView {
             ScrollView {
                 LazyVGrid(columns: [GridItem(spacing: 16), GridItem()]) {
                     Button {
-                        selectedScreen = .dataTracker
+                        appState.selectedScreen = .dataTracker
                     } label: {
                         NavCellView(title: "Data Tracker",
                                     systemImageName: "list.bullet.clipboard",
                                     color: .orangeish)
                     }
                     Button {
-                        selectedScreen = .timer
+                        appState.selectedScreen = .timer
                     } label: {
                         NavCellView(title: "Timer",
                                     systemImageName: "timer.circle",
                                     color: .brightPink)
                     }
                     Button {
-                        selectedScreen = .ageCalculator
+                        appState.selectedScreen = .ageCalculator
                     } label: {
                         NavCellView(title: "Age Calculator",
                                     systemImageName: "number.square",
                                     color: .purpleish)
                     }
                     Button {
-                        selectedScreen = .dateCalculator
+                        appState.selectedScreen = .dateCalculator
                     } label: {
                         NavCellView(title: "Date Calulator",
                                     systemImageName: "calendar",
                                     color: .greenish)
                     }
                     Button {
-                        selectedScreen = .settings
+                        appState.selectedScreen = .settings
                     } label: {
                         NavCellView(title: "Settings",
                                     systemImageName: "gearshape",
@@ -65,15 +54,15 @@ struct RootView: View {
             }
             .navigationTitle("SLP Toolbox")
             
-            List(selection: $selectedScreen) { }
+            List(selection: $appState.selectedScreen) { }
                 .frame(height: 0)
         } detail: {
-            switch selectedScreen {
+            switch appState.selectedScreen {
             case .dataTracker, .none:
                 DataTrackView()
                     .environment(\.managedObjectContext, viewContext)
             case .timer:
-                TimerView()
+                TimerView(timerModel: appState.timerModel)
                     .navigationTitle("Timer")
             case .ageCalculator:
                 AgeCalculatorView()
@@ -81,21 +70,17 @@ struct RootView: View {
             case .dateCalculator:
                 DateCalculatorView()
                     .navigationTitle("Date Calculator")
-            case .notes:
-                Text("Notes Placeholder!")
-                    .navigationTitle("Notes")
             case .settings:
                 SettingsView()
                     .navigationTitle("Settings")
-           
+                
             }
         }
-        .navigationSplitViewStyle(.balanced)
-        .onAppear {
-            selectedScreen = Screen(rawValue: selectedScreenIndex) ?? selectedScreen
-        }
-        .onChange(of: selectedScreen) { newValue in
-            selectedScreenIndex = newValue?.rawValue ?? 0
+        .onOpenURL { url in
+            print(url)
+            if url.pathComponents.first == "timer" {
+                appState.selectedScreen = .timer
+            }
         }
     }
 }
@@ -103,6 +88,7 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
+            .environmentObject(AppState.shared)
     }
 }
 
@@ -127,7 +113,6 @@ struct NavCellView: View {
                 Text(title)
                     .foregroundColor(.white)
                     .font(.title2)
-                    .fontWeight(.medium)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .padding([.leading, .trailing], 8)

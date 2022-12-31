@@ -57,32 +57,44 @@ struct CountdownView: View {
         }
     }
     
+    private func endTimeText(for endDate: Date) -> some View {
+        Label {
+            Text(endDate, formatter: dateFormatter)
+        } icon: {
+            Image(systemName: "bell.fill")
+        }
+        .font(.subheadline)
+        .foregroundColor(.secondary)
+        .padding(.top, 1)
+    }
+    
     var body: some View {
         VStack(alignment: .center) {
-            if timerModel.isTimerPaused {
-                countdownTexts(for: .now, end: Date.now.addingTimeInterval(timerModel.timeRemaining))
-            }
-            else if !timerModel.isTimerEnded {
-                TimelineView(.periodic(from: .now, by: 1)) { timeline in
-                    if timeline.date < timerModel.endDate  {
-                        countdownTexts(for: timeline.date, end: timerModel.endDate)
+            switch timerModel.timerState {
+            case .paused(let timeRemaining):
+                Group {
+                    countdownTexts(for: .now, end: Date.now.addingTimeInterval(timeRemaining))
+                    endTimeText(for: .now.addingTimeInterval(timeRemaining))
+                        .opacity(0.5)
+                }
+            case .running(let endDate):
+                Group {
+                    TimelineView(.periodic(from: .now, by: 1)) { timeline in
+                        if timeline.date < endDate  {
+                            countdownTexts(for: timeline.date, end: endDate)
+                        }
                     }
+                    endTimeText(for: endDate)
                 }
-            } else {
-                withAnimation {
-                    countdownTexts(for: timerModel.endDate, end: timerModel.endDate)
+            case .ended(let endDate):
+                Group {
+                    countdownTexts(for: endDate, end: endDate)
                         .foregroundColor(.secondary)
+                    endTimeText(for: endDate)
                 }
+            case .inactive:
+                EmptyView()
             }
-            Label {
-                Text(timerModel.endDate, formatter: dateFormatter)
-            } icon: {
-                Image(systemName: "bell.fill")
-            }
-            .font(.subheadline)
-            .foregroundColor(.secondary)
-            .opacity(timerModel.isTimerPaused ? 0.5: 1.0)
-            .padding(.top, 1)
         }
     }
 }
