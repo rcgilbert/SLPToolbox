@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 enum AppScreen: String {
     case dataTracker
@@ -17,21 +18,8 @@ enum AppScreen: String {
 }
 
 @MainActor class AppState: ObservableObject {
-    @Published var selectedScreen: AppScreen? = .dataTracker
+    @AppStorage("AppState.SelectedScreen") var selectedScreen: AppScreen?
     @Published var timerModel: TimerModel = TimerModel()
     
     static let shared = AppState()
-    
-    func saveSelectedScreen() {
-        UserDefaults.standard.set(selectedScreen?.rawValue, forKey: "AppState.SelectedScreen")
-    }
-    
-    func loadSelectedScreen() {
-        guard let selectedScreenName = UserDefaults.standard.object(forKey: "AppState.SelectedScreen") as? String,
-              let storedSelectedScreen = AppScreen(rawValue: selectedScreenName) else {
-            return
-        }
-        
-        selectedScreen = storedSelectedScreen
-    }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 import UserNotifications
  
 @MainActor final class TimerModel: ObservableObject {
-    enum TimerState {
+    enum TimerState: Codable {
         case inactive
         case running(endDate: Date)
         case paused(timeRemaining: TimeInterval)
@@ -20,12 +20,23 @@ import UserNotifications
     public static let NotificationID = "SLPToolbox.Timer"
     public static let NotificationEndDateUserInfoKey = "Timer.EndDate"
     
-    @Published var timerState: TimerState = .inactive
+    @StoredCodable(key: "TimerModel.TimerState", defaultValue: .inactive) var timerState: TimerState
+    
+    private var timer: Timer?
+    
+    init() {
+        if case let .running(endDate) = timerState, endDate < .now {
+            end()
+        }
+        updateTimer()
+    }
     
     func start(withDuration duration: TimeInterval) {
         timerState = .running(endDate: .init(timeIntervalSinceNow: duration))
         
         scheduleTimerNotication()
+        updateLiveActivity()
+        updateTimer()
     }
     
     func resume() {
@@ -36,6 +47,8 @@ import UserNotifications
         timerState = .running(endDate: .init(timeIntervalSinceNow: timerRemaining))
         
         scheduleTimerNotication()
+        updateLiveActivity()
+        updateTimer()
     }
     
     func pause() {
@@ -46,19 +59,33 @@ import UserNotifications
         timerState = .paused(timeRemaining: endDate.timeIntervalSinceNow)
         
         removeTimerNotification()
+        updateLiveActivity()
+        updateTimer()
+    }
+    
+    @objc func end() {
+        guard case let .running(endDate) = timerState, endDate <= .now else {
+            return
+        }
+        
+        timerState = .ended(endDate: endDate)
+        
+        removeTimerNotification()
+        updateLiveActivity()
+        updateTimer()
     }
     
     func cancel() {
         timerState = .inactive
         
         removeTimerNotification()
+        updateLiveActivity()
+        updateTimer()
     }
     
     func requestNotificationPermissions() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .criticalAlert]) { granted, error in
-            if granted {
-                print("Granted!")
-            }
+            // Add state for permissions are not granted
         }
     }
     
@@ -88,5 +115,36 @@ import UserNotifications
     private func removeTimerNotification() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [Self.NotificationID])
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [Self.NotificationID])
+    }
+    
+    private func updateTimer() {
+        switch timerState {
+        case .inactive:
+            timer?.invalidate()
+            timer = nil
+        case .running(let endDate):
+            let t = Timer(fireAt: endDate, interval: 0, target: self, selector: #selector(end), userInfo: nil, repeats: false)
+            timer = t
+            RunLoop.main.add(t, forMode: .default)
+        case .paused:
+            timer?.invalidate()
+            timer = nil
+        case .ended:
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
+    private func updateLiveActivity() {
+//        switch timerState {
+//        case .inactive:
+//            break
+//        case .running(let endDate):
+//            break
+//        case .paused(let timeRemaining):
+//            break
+//        case .ended(let endDate):
+//            break
+//        }
     }
 }

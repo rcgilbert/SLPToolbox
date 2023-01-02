@@ -39,6 +39,7 @@
 		44BB034C295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */; };
 		44BB034F295A6C8E00CE1E31 /* TimerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 44BB033A295A6C8C00CE1E31 /* TimerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		44BB035C295E970C00CE1E31 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035B295E970C00CE1E31 /* AppState.swift */; };
+		44BB035E2962186400CE1E31 /* StoredCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035D2962186400CE1E31 /* StoredCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		44BB0348295A6C8E00CE1E31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44BB034A295A6C8E00CE1E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44BB035B295E970C00CE1E31 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		44BB035D2962186400CE1E31 /* StoredCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				447BBE562947C35F002D4DCA /* HelperExtensions.swift */,
 				446E6DFB2956512B000CA0A1 /* GaugeProgressStyle.swift */,
 				446E6DFF29567305000CA0A1 /* Theming.swift */,
+				44BB035D2962186400CE1E31 /* StoredCodable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				4465663C29551D1600BA31B0 /* AdaptiveStack.swift in Sources */,
 				446E6DFC2956512B000CA0A1 /* GaugeProgressStyle.swift in Sources */,
 				446E6E0529569EDE000CA0A1 /* AboutView.swift in Sources */,
+				44BB035E2962186400CE1E31 /* StoredCodable.swift in Sources */,
 				446E6E0029567305000CA0A1 /* Theming.swift in Sources */,
 				446E6E03295677E2000CA0A1 /* SettingsView.swift in Sources */,
 				4465663F29552D1D00BA31B0 /* AgeCalculatorView.swift in Sources */,

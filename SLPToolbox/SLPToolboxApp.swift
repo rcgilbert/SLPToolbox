@@ -27,22 +27,14 @@ struct SLPToolboxApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
-        AppState.shared.loadSelectedScreen()
         return true
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        AppState.shared.saveSelectedScreen()
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
-        if notification.request.identifier == TimerModel.NotificationID,
-           let endDate = notification.request.content.userInfo[TimerModel.NotificationEndDateUserInfoKey] as? Date {
-            withAnimation {
-                AppState.shared.timerModel.timerState = .ended(endDate: endDate)
-            }
-           
-        }
         return [.banner, .sound]
     }
     

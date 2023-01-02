@@ -117,6 +117,5 @@ struct TimerView_Previews: PreviewProvider {
     
     static var previews: some View {
         TimerView(timerModel: timerModel)
-            .environment(\.locale, Locale(identifier: "ee_TG"))
     }
 }
