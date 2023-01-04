@@ -33,10 +33,7 @@
 		44BB033F295A6C8C00CE1E31 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BB033E295A6C8C00CE1E31 /* SwiftUI.framework */; };
 		44BB0342295A6C8C00CE1E31 /* TimerBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0341295A6C8C00CE1E31 /* TimerBundle.swift */; };
 		44BB0344295A6C8C00CE1E31 /* TimerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0343295A6C8C00CE1E31 /* TimerLiveActivity.swift */; };
-		44BB0346295A6C8C00CE1E31 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0345295A6C8C00CE1E31 /* Timer.swift */; };
 		44BB0349295A6C8E00CE1E31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB0348295A6C8E00CE1E31 /* Assets.xcassets */; };
-		44BB034B295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */; };
-		44BB034C295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */; };
 		44BB034F295A6C8E00CE1E31 /* TimerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 44BB033A295A6C8C00CE1E31 /* TimerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		44BB035C295E970C00CE1E31 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035B295E970C00CE1E31 /* AppState.swift */; };
 		44BB035E2962186400CE1E31 /* StoredCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035D2962186400CE1E31 /* StoredCodable.swift */; };
@@ -378,7 +375,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44BB034C295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */,
 				446AE4B32954BD0A00878647 /* TimerModel.swift in Sources */,
 				446E6E072956BF77000CA0A1 /* AppSettings.swift in Sources */,
 				447BBE592947D543002D4DCA /* DataRowCellView.swift in Sources */,
@@ -408,8 +404,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44BB034B295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */,
-				44BB0346295A6C8C00CE1E31 /* Timer.swift in Sources */,
 				44BB03622963CCD300CE1E31 /* Theming.swift in Sources */,
 				44BB0344295A6C8C00CE1E31 /* TimerLiveActivity.swift in Sources */,
 				44BB036129638EF700CE1E31 /* TimerAttributes.swift in Sources */,
@@ -572,6 +566,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SLPToolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -608,6 +605,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.SLPToolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
