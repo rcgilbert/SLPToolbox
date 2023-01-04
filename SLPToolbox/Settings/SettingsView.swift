@@ -85,7 +85,9 @@ struct SettingsView: View {
     }
     
     private func getMailURL() -> URL! {
-        URL(string: "mailto:slptoolbox@speechieadventures.com?subject=%5BSLPToolbox%5D&body=%5B%5D")!
+        let deviceInfoString = "\(Bundle.main.versionString ?? "")(\(Bundle.main.versionString ?? ""))"
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        return URL(string: "mailto:slptoolbox@speechieadventures.com?subject=%5BSLPToolbox%5D&body=%5B\(deviceInfoString)%5D")!
     }
 }
 

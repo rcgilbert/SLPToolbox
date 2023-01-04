@@ -14,7 +14,7 @@ struct AboutView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text("lorem ipsum")
+                    Text("SLP Toolbox is a suite of quick tools to make common tasks for _Speech and Language Pathologists_ a little quicker and easier.\n\nThis app was designed by **Speechie Adventures**.")
                         .multilineTextAlignment(.leading)
                         .font(.body)
                 }

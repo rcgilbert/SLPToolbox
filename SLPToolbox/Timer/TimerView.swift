@@ -108,6 +108,11 @@ struct TimerView: View {
         }
         .onAppear {
             timerModel.requestNotificationPermissions()
+            
+            if case let .running(endDate) = timerModel.timerState,
+                endDate < .now {
+                timerModel.end()
+            }
         }
     }
 }

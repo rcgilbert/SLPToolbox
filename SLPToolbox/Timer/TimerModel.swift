@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import UserNotifications
+import ActivityKit
  
 @MainActor final class TimerModel: ObservableObject {
     enum TimerState: Codable {
@@ -23,6 +24,8 @@ import UserNotifications
     @StoredCodable(key: "TimerModel.TimerState", defaultValue: .inactive) var timerState: TimerState
     
     private var timer: Timer?
+    
+    private var activity: Activity<TimerAttributes>?
     
     init() {
         if case let .running(endDate) = timerState, endDate < .now {
@@ -64,7 +67,7 @@ import UserNotifications
     }
     
     @objc func end() {
-        guard case let .running(endDate) = timerState, endDate <= .now else {
+        guard case let .running(endDate) = timerState else {
             return
         }
         
@@ -136,15 +139,26 @@ import UserNotifications
     }
     
     private func updateLiveActivity() {
-//        switch timerState {
-//        case .inactive:
-//            break
-//        case .running(let endDate):
-//            break
-//        case .paused(let timeRemaining):
-//            break
-//        case .ended(let endDate):
-//            break
-//        }
+        guard ActivityAuthorizationInfo().areActivitiesEnabled else {
+            return
+        }
+        
+        switch timerState {
+        case .running(let endDate):
+            let contentState = TimerAttributes.ContentState(endDate: endDate)
+            let activityAttributs = TimerAttributes(name: "Timer")
+            let activityContent = ActivityContent(state: contentState, staleDate: endDate)
+            
+            do {
+                activity = try Activity.request(attributes: activityAttributs, content: activityContent)
+            } catch {
+                print(error)
+            }
+        case .inactive, .ended, .paused:
+            for activity in Activity<TimerAttributes>.activities {
+                Task { await activity.end(nil, dismissalPolicy: .immediate) }
+            }
+        }
     }
 }
+

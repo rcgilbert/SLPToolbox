@@ -56,7 +56,6 @@ struct DataTracksListView: View {
     }
     
     private func save() {
-        print("saving!")
         do {
             try viewContext.save()
         } catch {

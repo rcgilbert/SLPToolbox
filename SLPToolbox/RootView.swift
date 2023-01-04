@@ -77,7 +77,6 @@ struct RootView: View {
             }
         }
         .onOpenURL { url in
-            print(url)
             if url.pathComponents.first == "timer" {
                 appState.selectedScreen = .timer
             }

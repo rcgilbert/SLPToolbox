@@ -40,6 +40,11 @@
 		44BB034F295A6C8E00CE1E31 /* TimerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 44BB033A295A6C8C00CE1E31 /* TimerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		44BB035C295E970C00CE1E31 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035B295E970C00CE1E31 /* AppState.swift */; };
 		44BB035E2962186400CE1E31 /* StoredCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035D2962186400CE1E31 /* StoredCodable.swift */; };
+		44BB036029638ECF00CE1E31 /* TimerAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035F29638ECF00CE1E31 /* TimerAttributes.swift */; };
+		44BB036129638EF700CE1E31 /* TimerAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB035F29638ECF00CE1E31 /* TimerAttributes.swift */; };
+		44BB03622963CCD300CE1E31 /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E6DFF29567305000CA0A1 /* Theming.swift */; };
+		44BB03632963CCE700CE1E31 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446E6DFD295671D4000CA0A1 /* Colors.xcassets */; };
+		44BB03652964E97300CE1E31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44BB03642964E97300CE1E31 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +109,8 @@
 		44BB034A295A6C8E00CE1E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44BB035B295E970C00CE1E31 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		44BB035D2962186400CE1E31 /* StoredCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredCodable.swift; sourceTree = "<group>"; };
+		44BB035F29638ECF00CE1E31 /* TimerAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAttributes.swift; sourceTree = "<group>"; };
+		44BB03642964E97300CE1E31 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				446E6DF929562CDD000CA0A1 /* SLPToolbox.entitlements */,
+				44BB03642964E97300CE1E31 /* Launch Screen.storyboard */,
 				446A2816294D8E7C00DD14E4 /* UnusedViews */,
 				446E6DFA29565110000CA0A1 /* Utilities */,
 				447BBE422947BAEC002D4DCA /* SLPToolboxApp.swift */,
@@ -256,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				44BB0341295A6C8C00CE1E31 /* TimerBundle.swift */,
+				44BB035F29638ECF00CE1E31 /* TimerAttributes.swift */,
 				44BB0343295A6C8C00CE1E31 /* TimerLiveActivity.swift */,
 				44BB0345295A6C8C00CE1E31 /* Timer.swift */,
 				44BB0347295A6C8C00CE1E31 /* Timer.intentdefinition */,
@@ -348,6 +357,7 @@
 			files = (
 				446E6DFE295671D4000CA0A1 /* Colors.xcassets in Resources */,
 				447BBE4A2947BAEF002D4DCA /* Preview Assets.xcassets in Resources */,
+				44BB03652964E97300CE1E31 /* Launch Screen.storyboard in Resources */,
 				447BBE472947BAEF002D4DCA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BB0349295A6C8E00CE1E31 /* Assets.xcassets in Resources */,
+				44BB03632963CCE700CE1E31 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +391,7 @@
 				4465663F29552D1D00BA31B0 /* AgeCalculatorView.swift in Sources */,
 				446566422955667000BA31B0 /* DateCalculatorView.swift in Sources */,
 				447BBE4C2947BAEF002D4DCA /* Persistence.swift in Sources */,
+				44BB036029638ECF00CE1E31 /* TimerAttributes.swift in Sources */,
 				447BBE452947BAEC002D4DCA /* DataTrackView.swift in Sources */,
 				447BBE572947C35F002D4DCA /* HelperExtensions.swift in Sources */,
 				443641FE294850C400E03A90 /* RootView.swift in Sources */,
@@ -398,7 +410,9 @@
 			files = (
 				44BB034B295A6C8E00CE1E31 /* Timer.intentdefinition in Sources */,
 				44BB0346295A6C8C00CE1E31 /* Timer.swift in Sources */,
+				44BB03622963CCD300CE1E31 /* Theming.swift in Sources */,
 				44BB0344295A6C8C00CE1E31 /* TimerLiveActivity.swift in Sources */,
+				44BB036129638EF700CE1E31 /* TimerAttributes.swift in Sources */,
 				44BB0342295A6C8C00CE1E31 /* TimerBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,8 +561,10 @@
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -581,8 +597,10 @@
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

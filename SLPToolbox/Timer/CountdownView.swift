@@ -39,7 +39,7 @@ struct CountdownView: View {
                  formatter: timerFormatter)
             .padding([.leading, .trailing, .bottom], 16)
             .font(.system(size: 100))
-            .fontDesign(.monospaced)
+            .monospacedDigit()
             .minimumScaleFactor(0.1)
             .lineLimit(1)
             

@@ -20,6 +20,30 @@ struct SLPToolboxApp: App {
             RootView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appState)
+                .onOpenURL { url in
+                    guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+                          let host = components.host,
+                          let screen = AppScreen(rawValue: host) else {
+                        return
+                    }
+                    appState.selectedScreen = screen
+                    
+                    switch screen {
+                    case .dataTracker:
+                        break
+                    case .timer:
+                        if components.queryItems?
+                            .contains(where: { $0.name == "action" && $0.value == "cancel"}) == true {
+                            appState.timerModel.cancel()
+                        }
+                    case .ageCalculator:
+                        break
+                    case .dateCalculator:
+                        break
+                    case .settings:
+                        break
+                    }
+                }
         }
     }
 }
