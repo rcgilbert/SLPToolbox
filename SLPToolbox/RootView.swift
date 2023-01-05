@@ -13,49 +13,34 @@ struct RootView: View {
    
     var body: some View {
         NavigationSplitView {
-            ScrollView {
-                LazyVGrid(columns: [GridItem(spacing: 16), GridItem()]) {
-                    Button {
-                        appState.selectedScreen = .dataTracker
-                    } label: {
-                        NavCellView(title: "Data Tracker",
-                                    systemImageName: "list.bullet.clipboard",
-                                    color: .orangeish)
-                    }
-                    Button {
-                        appState.selectedScreen = .timer
-                    } label: {
-                        NavCellView(title: "Timer",
-                                    systemImageName: "timer.circle",
-                                    color: .brightPink)
-                    }
-                    Button {
-                        appState.selectedScreen = .ageCalculator
-                    } label: {
-                        NavCellView(title: "Age Calculator",
-                                    systemImageName: "number.square",
-                                    color: .purpleish)
-                    }
-                    Button {
-                        appState.selectedScreen = .dateCalculator
-                    } label: {
-                        NavCellView(title: "Date Calulator",
-                                    systemImageName: "calendar",
-                                    color: .greenish)
-                    }
-                    Button {
-                        appState.selectedScreen = .settings
-                    } label: {
-                        NavCellView(title: "Settings",
-                                    systemImageName: "gearshape",
-                                    color: .grayish)
-                    }
-                }.padding()
+            List(selection: $appState.selectedScreen) {
+                Section {
+                    NavCellView(title: "Data Tracker",
+                                systemImageName: "list.bullet.clipboard",
+                                color: .orangeish,
+                                screen: .dataTracker)
+                    NavCellView(title: "Timer",
+                                systemImageName: "timer.circle",
+                                color: .brightPink,
+                                screen: .timer)
+                    NavCellView(title: "Age Calculator",
+                                systemImageName: "number.square",
+                                color: .purpleish,
+                                screen: .ageCalculator)
+                    NavCellView(title: "Date Calulator",
+                                systemImageName: "calendar",
+                                color: .greenish,
+                                screen: .dateCalculator)
+                }
+                Section {
+                    NavCellView(title: "Settings",
+                                systemImageName: "gearshape",
+                                color: .grayish,
+                                screen: .settings)
+                }
             }
+            .listStyle(.insetGrouped)
             .navigationTitle("SLP Toolbox")
-            
-            List(selection: $appState.selectedScreen) { }
-                .frame(height: 0)
         } detail: {
             switch appState.selectedScreen {
             case .dataTracker, .none:
@@ -88,6 +73,7 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
             .environmentObject(AppState.shared)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
@@ -95,27 +81,28 @@ struct NavCellView: View {
     @State var title: String
     @State var systemImageName: String
     @State var color: Color = .orangeish
-   
+    @State var screen: AppScreen
+    
+    @State var isTapped: Bool = false
+    
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
-                .foregroundColor(color)
-                .aspectRatio(1.2, contentMode: .fit)
-                .shadow(radius: 3, x: 3, y: 3)
-            VStack(spacing: 16) {
-                Image(systemName: systemImageName)
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .frame(height: 32)
-                    .foregroundColor(.white)
-                
+        NavigationLink(value: screen) {
+            HStack(spacing: 16) {
+                ZStack {
+                    RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
+                        .fill(color)
+                        .aspectRatio(1, contentMode: .fit)
+                        .frame(width: 40)
+                    Image(systemName: systemImageName)
+                        .font(.body)
+                        .imageScale(.large)
+                        .foregroundStyle(.white)
+                }.shadow(color: .gray.opacity(0.5), radius: 1, x: 0, y: 1)
+               
                 Text(title)
-                    .foregroundColor(.white)
-                    .font(.title2)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .padding([.leading, .trailing], 8)
-            }
+                    .font(.title3)
+                    .foregroundColor(.primary)
+            }.padding(8)
         }
     }
 }
