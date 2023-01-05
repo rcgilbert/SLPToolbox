@@ -45,6 +45,7 @@ struct DateCalculatorView: View {
                         .font(.title2)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
+                        .textSelection(.enabled)
                         .padding()
                         .multilineTextAlignment(.center)
                 } else {

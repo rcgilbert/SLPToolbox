@@ -97,8 +97,8 @@ struct NavCellView: View {
                         .font(.body)
                         .imageScale(.large)
                         .foregroundStyle(.white)
-                }.shadow(color: .gray.opacity(0.5), radius: 1, x: 0, y: 1)
-               
+                }
+                .shadow(color: .gray.opacity(0.5), radius: 1, x: 0, y: 1)
                 Text(title)
                     .font(.title3)
                     .foregroundColor(.primary)

@@ -37,6 +37,7 @@ struct AgeCalculatorView: View {
                                                          to: selectedDate),
                          formatter: dateComponentsFormatter)
                     .font(.title2)
+                    .textSelection(.enabled)
                     .padding()
                 } else {
                     Text("Select Birth Date")
