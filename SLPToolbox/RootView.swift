@@ -90,7 +90,7 @@ struct NavCellView: View {
             HStack(spacing: 16) {
                 ZStack {
                     RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
-                        .fill(color)
+                        .fill(color.gradient)
                         .aspectRatio(1, contentMode: .fit)
                         .frame(width: 40)
                     Image(systemName: systemImageName)
