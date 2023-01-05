@@ -33,8 +33,8 @@ struct RootView: View {
                                 screen: .dateCalculator)
                 }
                 Section {
-                    NavCellView(title: "Settings",
-                                systemImageName: "gearshape",
+                    NavCellView(title: "App Info",
+                                systemImageName: "info.circle",
                                 color: .grayish,
                                 screen: .settings)
                 }
@@ -57,7 +57,7 @@ struct RootView: View {
                     .navigationTitle("Date Calculator")
             case .settings:
                 SettingsView()
-                    .navigationTitle("Settings")
+                    .navigationTitle("More")
                 
             }
         }
