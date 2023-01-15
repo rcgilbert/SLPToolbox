@@ -14,15 +14,16 @@ struct DataRowCellView: View {
     @Environment(\.undoManager) private var undoManager
     
     @ObservedObject var dataRow: DataRow
+    @Binding var textViewDisabled: Bool
     var body: some View {
         VStack {
-            
             TextField("Data Title", text: $dataRow.wrappedName, prompt: Text("Enter Text"))
                 .font(.title2)
                 .textFieldStyle(.roundedBorder)
                 .submitLabel(.done)
                 .multilineTextAlignment(.leading)
                 .padding()
+                .disabled(textViewDisabled)
             HStack {
                 ProgressView(value: dataRow.percentageCorrect) {
                     VStack(alignment: .center, spacing: 8) {
@@ -99,12 +100,13 @@ struct DataRowCellView: View {
 }
 
 struct DataRowCellView_Previews: PreviewProvider {
+    @State static var disabled = false
     static var previews: some View {
         let dataRow = DataRow(context: PersistenceController.preview.container.viewContext)
         dataRow.name = "Elvis"
         dataRow.timestamp = Date()
         
-        return DataRowCellView(dataRow: dataRow)
+        return DataRowCellView(dataRow: dataRow, textViewDisabled: $disabled)
             .frame(height: 300)
     }
 }
