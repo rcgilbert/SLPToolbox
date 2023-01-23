@@ -13,10 +13,18 @@ struct AboutView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading) {
-                    Text("SLP Toolbox is a suite of quick tools to make common tasks for _Speech and Language Pathologists_ a little quicker and easier.\n\nThis app was designed by **Speechie Adventures**.")
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("SLP Toolbox is a suite of quick tools to make common tasks for _Speech and Language Pathologists_ a little quicker and easier. It is not meant as a treatment or medical tool and is provided without warranty. \n\nThis app was conceived and designed by **Speechie Adventures**.")
                         .multilineTextAlignment(.leading)
                         .font(.body)
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image("sa-logo")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                        Spacer()
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
